@@ -65,8 +65,8 @@ export const projectsData = [
   {
     title: "Final Year Project",
     description:
-      "College management web app with notice board, authentication, student/admin portals, result management, fee payment, and syllabus-based question paper generator and more",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Stripe"],
+      "College management web app with notice board, auth, student/admin portals, result management, fee payment, and syllabus-based question paper generation",
+    tags: ["React", "Next.js", "MongoDB", "Express", "Stripe", "Tailwind"],
     imageUrl: gcetImg, /// GCET PROJECT IMAGE
     repo: "https://github.com/aaqifshafi/G-CET/",
   },
@@ -82,7 +82,14 @@ export const projectsData = [
     title: "Chat with PDF",
     description:
       "An AI Assistat to make PDFs interactive turns static documents into dynamic conversations, enhancing productivity 10x fold effortlessly.",
-    tags: ["Next.js", "Firebase", "Langchain", "Pinecone", "OpenAI"],
+    tags: [
+      "Next.js",
+      "Firebase",
+      "Langchain",
+      "Pinecone",
+      "OpenAI",
+      "TypeScript",
+    ],
     imageUrl: chatWithPdfImg,
     repo: "https://github.com/aaqifshafi/chat-with-pdf",
   },
