@@ -4,7 +4,7 @@ import { FaReact } from "react-icons/fa";
 import { FaLaptopCode } from "react-icons/fa6";
 import gcetImg from "@/public/gcet.png";
 import busappImg from "@/public/busapp.png";
-// import wordanalyticsImg from "@/public/wordanalytics.png";
+import chatWithPdfImg from "@/public/chatWithPdf.png";
 
 export const links = [
   {
@@ -68,28 +68,24 @@ export const projectsData = [
       "College management web app with notice board, authentication, student/admin portals, result management, fee payment, and syllabus-based question paper generator and more",
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Stripe"],
     imageUrl: gcetImg, /// GCET PROJECT IMAGE
+    repo: "https://github.com/aaqifshafi/G-CET/",
   },
   {
     title: "Bus Tracking App",
     description:
       "A web app for tracking buses in real-time. It shows the location of bus on a map. It also shows the estimated time of arrival It uses the Google Maps API.",
-    tags: [
-      "React",
-      "JavaScript",
-      "Next.js",
-      "Tailwind",
-      "shadcn/ui",
-      "Google Maps API",
-    ],
+    tags: ["JavaScript", "Next.js", "Tailwind", "shadcn/ui", "Google Maps API"],
     imageUrl: busappImg,
+    repo: "https://github.com/aaqifshafi/Bus-Tracking-App",
   },
-  // {
-  //   title: "Word Analytics",
-  //   description:
-  //     "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-  //   tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-  //   imageUrl: wordanalyticsImg,
-  // },
+  {
+    title: "Chat with PDF",
+    description:
+      "An AI Assistat to make PDFs interactive turns static documents into dynamic conversations, enhancing productivity 10x fold effortlessly.",
+    tags: ["Next.js", "Firebase", "Langchain", "Pinecone", "OpenAI"],
+    imageUrl: chatWithPdfImg,
+    repo: "https://github.com/aaqifshafi/chat-with-pdf",
+  },
 ] as const;
 
 export const skillsData = [
