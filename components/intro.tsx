@@ -31,7 +31,7 @@ export default function Intro() {
             }}
           >
             <Image
-              src="https://media.licdn.com/dms/image/D4D03AQG3xwf6YiJY-A/profile-displayphoto-shrink_800_800/0/1678604704142?e=1726099200&v=beta&t=Foq--46prXvo9_bCkmOeaEGZhUE_hUU9KIu-T1p4msU"
+              src="https://avatars.githubusercontent.com/aaqifshafi"
               alt="Aaqif Shafi"
               width="192"
               height="192"
