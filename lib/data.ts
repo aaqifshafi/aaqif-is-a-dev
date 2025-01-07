@@ -2,7 +2,7 @@ import React from "react";
 import { LuGraduationCap } from "react-icons/lu";
 import { FaReact } from "react-icons/fa";
 import { FaLaptopCode } from "react-icons/fa6";
-import { LuRecycle } from "react-icons/lu";
+import { GiGreenhouse } from "react-icons/gi";
 import { FaServer } from "react-icons/fa";
 import gcetImg from "@/public/gcet.png";
 import busappImg from "@/public/busapp.png";
@@ -53,10 +53,10 @@ export const experiencesData = [
     date: "2022",
   },
   {
-    title: "Full-Stack Developer",
+    title: "Full-Stack Engineer",
     location: "Remote",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind,MongoDB, Express. I'm open to full-time opportunities.",
+      "I'm now a full-stack engineer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, MongoDB, Express, and more.",
     icon: React.createElement(FaReact),
     date: "2023 - present",
   },
@@ -73,7 +73,7 @@ export const experiencesData = [
     location: "Dubai, UAE",
     description:
       "At Payoll, I contributed to the development of Ared, an advanced API service focused on carbon calculators. This project involved creating innovative tools that enable users to measure and manage their carbon footprints effectively, supporting sustainability goals.",
-    icon: React.createElement(LuRecycle),
+    icon: React.createElement(GiGreenhouse),
     date: "2024",
   },
 ] as const;
@@ -84,7 +84,7 @@ export const projectsData = [
       "College management web app with notice board, auth, student/admin portals, result management, fee payment, and syllabus-based question paper generation",
     tags: ["React", "Next.js", "MongoDB", "Express", "Stripe", "Tailwind"],
     imageUrl: gcetImg, /// GCET PROJECT IMAGE
-    repo: "https://github.com/aaqifshafi/G-CET/",
+    repo: "https://gcet.aaqif.codes",
   },
   {
     title: "Bus Tracking App",
