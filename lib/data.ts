@@ -2,6 +2,8 @@ import React from "react";
 import { LuGraduationCap } from "react-icons/lu";
 import { FaReact } from "react-icons/fa";
 import { FaLaptopCode } from "react-icons/fa6";
+import { LuRecycle } from "react-icons/lu";
+import { FaServer } from "react-icons/fa";
 import gcetImg from "@/public/gcet.png";
 import busappImg from "@/public/busapp.png";
 import chatWithPdfImg from "@/public/chatWithPdf.png";
@@ -50,7 +52,6 @@ export const experiencesData = [
     icon: React.createElement(FaLaptopCode),
     date: "2022",
   },
-
   {
     title: "Full-Stack Developer",
     location: "Remote",
@@ -59,8 +60,23 @@ export const experiencesData = [
     icon: React.createElement(FaReact),
     date: "2023 - present",
   },
+  {
+    title: "Payoll Payments LLC",
+    location: "Dubai, UAE",
+    description:
+      "Contributed in developing a web application for managing billers using React, TypeScript, ANT Design, PostgreSQL, and Express.js, streamlining global billing processes and integrating seamlessly with Payoll's API services.",
+    icon: React.createElement(FaServer),
+    date: "2024",
+  },
+  {
+    title: "Ared",
+    location: "Dubai, UAE",
+    description:
+      "At Payoll, I contributed to the development of Ared, an advanced API service focused on carbon calculators. This project involved creating innovative tools that enable users to measure and manage their carbon footprints effectively, supporting sustainability goals.",
+    icon: React.createElement(LuRecycle),
+    date: "2024",
+  },
 ] as const;
-
 export const projectsData = [
   {
     title: "Final Year Project",
