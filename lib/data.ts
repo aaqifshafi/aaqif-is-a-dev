@@ -75,7 +75,7 @@ export const experiencesData = [
     description:
       "At Payoll, I contributed to the development of Ared, an advanced API service focused on carbon calculators. This project involved creating innovative tools that enable users to measure and manage their carbon footprints effectively, supporting sustainability goals.",
     icon: React.createElement(GiGreenhouse),
-    date: "2024",
+    date: "2025",
   },
   {
     title: " Nudge Lab",
