@@ -7,6 +7,7 @@ import { FaServer } from "react-icons/fa";
 import gcetImg from "@/public/gcet.png";
 import busappImg from "@/public/busapp.png";
 import chatWithPdfImg from "@/public/chatWithPdf.png";
+import { FaCodeMerge } from "react-icons/fa6";
 
 export const links = [
   {
@@ -56,9 +57,9 @@ export const experiencesData = [
     title: "Full-Stack Engineer",
     location: "Remote",
     description:
-      "I'm now a full-stack engineer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, MongoDB, Express, and more.",
+      "I worked as freelance full-stack engineer after during and after my degree. My stack included React, Next.js, TypeScript, Tailwind, MongoDB, Express, and more.",
     icon: React.createElement(FaReact),
-    date: "2023 - present",
+    date: "2023 - 2024",
   },
   {
     title: "Payoll Payments LLC",
@@ -75,6 +76,14 @@ export const experiencesData = [
       "At Payoll, I contributed to the development of Ared, an advanced API service focused on carbon calculators. This project involved creating innovative tools that enable users to measure and manage their carbon footprints effectively, supporting sustainability goals.",
     icon: React.createElement(GiGreenhouse),
     date: "2024",
+  },
+  {
+    title: " Nudge Lab",
+    location: "Bangalore, India",
+    description:
+      "I'm currently working as a Frontend Engineer at Nudge Lab, where we're building Gistr, an AI-powered tool that helps users learn and retain knowledge better. I craft user-facing features with Next.js, TypeScript, and Tailwind CSS, and work closely with design and backend teams to deliver fast, intuitive, and seamless user experiences.",
+    icon: React.createElement(FaCodeMerge),
+    date: "2024 - present",
   },
 ] as const;
 export const projectsData = [
