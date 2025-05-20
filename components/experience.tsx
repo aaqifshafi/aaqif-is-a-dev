@@ -17,9 +17,9 @@ export default function Experience() {
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>Experience and Education</SectionHeading>
+      <SectionHeading>Experience &amp; Education</SectionHeading>
       <VerticalTimeline lineColor="">
-        {[...experiencesData].reverse().map((item, index) => (
+        {experiencesData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
               contentStyle={{
