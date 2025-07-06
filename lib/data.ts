@@ -83,7 +83,7 @@ export const experiencesData = [
     description:
       "I'm currently working as a Frontend Engineer at Nudge Lab, where we're building Gistr, an AI-powered tool that helps users learn and retain knowledge better. I craft user-facing features with Next.js, TypeScript, and Tailwind CSS, and work closely with design and backend teams to deliver fast, intuitive, and seamless user experiences.",
     icon: React.createElement(FaCodeMerge),
-    date: "2024 - present",
+    date: "2025 - present",
   },
 ] as const;
 export const projectsData = [
