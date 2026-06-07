@@ -1,0 +1,63 @@
+# Aaqif Shafi — Full-Stack Product Engineer
+
+> Personal portfolio of Aaqif Shafi, a full-stack product engineer based in Kashmir, India. Building end-to-end products with NestJS, Next.js, and everything in between.
+
+This file follows the llms.txt convention (https://llmstxt.org) to give language models a concise, structured summary of the site.
+
+## About
+
+- Name: Aaqif Shafi (@aaqifshafi)
+- Role: Full-Stack Product Engineer
+- Location: Kashmir, India
+- Status: Available for work
+- Contact: aaqifshafi@gmail.com
+- GitHub: https://github.com/aaqifshafi
+- LinkedIn: https://linkedin.com/in/aaqifshafi
+
+## Experience
+
+- Gistr Technologies — Fullstack Product Engineer (Jan 2025 – Present)
+  End-to-end product ownership. NestJS, Next.js, BullMQ, AWS Lambda, PostHog. Payment gateways, CI/CD, monorepo architecture.
+
+- Payoll Payments LLC — Software Engineering Intern (Sep 2024 – Jan 2025)
+  B2B payments platform and Ared carbon footprint calculator. NestJS, Vite, PostgreSQL.
+
+## Projects
+
+- Chat With PDF: Conversational AI for semantic document search. Next.js, LangChain, Pinecone, OpenAI. https://github.com/aaqifshafi/chat-with-pdf
+- College Management System: Full-stack educational platform with Stripe payments, AI question paper generation, student and admin portals. https://github.com/aaqifshafi/G-CET
+
+## Tech Stack
+
+Languages: TypeScript, JavaScript
+Frontend: React, Next.js, Tailwind CSS, Framer Motion
+Backend: Node.js, NestJS, Express.js, BullMQ
+Databases: PostgreSQL, MongoDB, Redis
+Cloud: AWS, AWS Lambda, Vercel
+Tools: Git, GitHub, Vite, Bun, VS Code
+
+## Certifications
+
+- Next.js SEO Fundamentals — Vercel (2025)
+- Python with Data Science & Machine Learning — NIELIT (2023)
+- Responsive Web Design — freeCodeCamp (2023)
+- The Complete 2023 Web Development Bootcamp — Udemy (2023)
+- HTML, CSS, and Javascript for Web Developers — Johns Hopkins University (2022)
+- Fundamentals of Digital Marketing — Google (2021)
+
+## Sections
+
+- [Experience](https://aaqif.is-a.dev/#experience): Work history and roles.
+- [Projects](https://aaqif.is-a.dev/#projects): Selected projects with stacks and links.
+- [Tech Stack](https://aaqif.is-a.dev/#stack): Languages, frameworks, and tools.
+- [Contributions](https://aaqif.is-a.dev/#contributions): GitHub contribution activity.
+- [Certifications](https://aaqif.is-a.dev/#certifications): Credentials and certificates.
+
+## Pages
+
+- [Home](https://aaqif.is-a.dev/): Single-page portfolio.
+- [Blog](https://aaqif.is-a.dev/blog): Writing on software engineering and product development (coming soon).
+
+## Colophon
+
+Built with Next.js (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, the Geist typeface family, and @tabler/icons-react.
