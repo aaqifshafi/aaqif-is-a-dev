@@ -4,8 +4,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = process.env.RESEND_FROM_EMAIL ?? "Contact Form <onboarding@resend.dev>";
-const TO = process.env.CONTACT_TO_EMAIL ?? "aaqifshafi@gmail.com";
+const FROM = "onboarding@resend.dev";
+const TO = "aaqifshafi@gmail.com";
 
 export type ContactState =
   | { status: "idle" }
@@ -29,33 +29,33 @@ export async function sendContactMessage(
   }
 
   try {
-    await Promise.all([
-      resend.emails.send({
-        from: FROM,
-        to: TO,
-        replyTo: email,
-        subject: `New message from ${name}`,
-        text: [
-          "You received the following message from the contact form:",
-          "",
-          message,
-          "",
-          `Reply to: ${email}`,
-        ].join("\n"),
-      }),
-      resend.emails.send({
-        from: FROM,
-        to: email,
-        subject: "Got your message!",
-        text: [
-          `Hi ${name},`,
-          "",
-          "Thanks for reaching out! I've received your message and will get back to you soon.",
-          "",
-          "— Aaqif",
-        ].join("\n"),
-      }),
-    ]);
+    await resend.emails.send({
+      from: FROM,
+      to: TO,
+      replyTo: email,
+      subject: `New message from ${name}`,
+      text: [
+        "You received the following message from the contact form:",
+        "",
+        message,
+        "",
+        `Reply to: ${email}`,
+      ].join("\n"),
+    });
+
+    //NOTE: Confirmation email to sender — commented out until custom domain is set up
+    // await resend.emails.send({
+    //   from: FROM,
+    //   to: email,
+    //   subject: "Got your message!",
+    //   text: [
+    //     `Hi ${name},`,
+    //     "",
+    //     "Thanks for reaching out! I've received your message and will get back to you soon.",
+    //     "",
+    //     "— Aaqif",
+    //   ].join("\n"),
+    // });
 
     return { status: "success" };
   } catch (err) {

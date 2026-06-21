@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import {
   GitHubContributions,
   GitHubContributionsFallback,
+  GitHubContributionsError,
 } from "@/components/github-contributions";
 import { SectionShell } from "@/components/sections/section-shell";
 import { getCachedContributions } from "@/lib/get-cached-contributions";
@@ -19,6 +20,7 @@ export function ContributionsHeatmap() {
           <GitHubContributions
             contributions={contributions}
             githubProfileUrl={`https://github.com/${GITHUB_USERNAME}`}
+            errorFallback={<GitHubContributionsError />}
           />
         </Suspense>
       </div>

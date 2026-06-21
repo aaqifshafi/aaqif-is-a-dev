@@ -1,6 +1,6 @@
 "use client"
 
-import { use } from "react"
+import React, { use } from "react"
 import { format } from "date-fns"
 
 import { cn } from "@/lib/utils"
@@ -23,13 +23,19 @@ const linkClass =
 export function GitHubContributions({
   contributions,
   githubProfileUrl,
+  errorFallback,
   className,
 }: {
-  contributions: Promise<Activity[]>
+  contributions: Promise<Activity[] | null>
   githubProfileUrl: string
+  errorFallback?: React.ReactNode
   className?: string
 }) {
   const data = use(contributions)
+
+  if (data === null) {
+    return <>{errorFallback ?? null}</>
+  }
 
   return (
     <ContributionGraph
@@ -91,6 +97,16 @@ export function GitHubContributionsFallback() {
   return (
     <div className="flex h-[164px] w-full items-center justify-center">
       <Spinner className="text-outline" />
+    </div>
+  )
+}
+
+export function GitHubContributionsError() {
+  return (
+    <div className="flex h-[164px] w-full items-center justify-center">
+      <span className="font-technical text-[11px] text-outline">
+        Could not load contribution data.
+      </span>
     </div>
   )
 }
