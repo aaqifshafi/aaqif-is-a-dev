@@ -2,7 +2,7 @@
 
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useMounted } from "@/hooks/use-mounted";
 import { click003Sound } from "@/lib/click-003";
 import { playSound } from "@/lib/sound-engine";
@@ -16,11 +16,11 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   const mounted = useMounted();
   const isDark = !mounted || resolvedTheme === "dark";
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     const next = isDark ? "light" : "dark";
     void playSound(click003Sound.dataUri, { volume: 0.4 });
     setThemeWithTransition(setTheme, next);
-  };
+  }, [isDark, setTheme]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -31,8 +31,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDark]);
+  }, [toggle]);
 
   return (
     <button

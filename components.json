@@ -24,6 +24,7 @@
   "registries": {
     "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
     "@ncdai": "https://chanhdai.com/r/{name}.json",
-    "@soundcn": "https://soundcn.xyz/r/{name}.json"
+    "@soundcn": "https://soundcn.xyz/r/{name}.json",
+    "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }

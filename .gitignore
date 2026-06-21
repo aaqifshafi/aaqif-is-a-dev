@@ -35,6 +35,8 @@ yarn-error.log*
 
 # local MCP config (may contain a Stitch API key — never commit)
 .mcp.json
+.claude/
+.react-doctor/
 
 # vercel
 .vercel

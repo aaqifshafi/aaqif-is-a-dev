@@ -208,20 +208,7 @@
   body {
     @apply font-body antialiased min-h-dvh bg-background text-foreground;
   }
-  /* faint blueprint grid — a fixed texture behind content, masked so it fades out */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000, transparent 78%);
-    mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000, transparent 78%);
-  }
+ 
 
   /* modern thin scrollbar (matches the terminal aesthetic) */
   * {

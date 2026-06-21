@@ -3,7 +3,6 @@ import { GeistMono } from "geist/font/mono";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
 import { MotionProvider } from "@/components/motion-provider";
-import { SplashCursor } from "@/components/splash-cursor";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -58,7 +57,6 @@ export default function RootLayout({
           <MotionProvider>
             <TooltipProvider>{children}</TooltipProvider>
           </MotionProvider>
-          <SplashCursor />
         </ThemeProvider>
       </body>
     </html>

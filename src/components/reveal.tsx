@@ -25,7 +25,8 @@ export type RevealProps = {
 export function Reveal({ children, className, delay = 0, immediate = false }: RevealProps) {
   const reduce = useReducedMotion();
 
-  if (reduce) {
+  // null = server / not yet known; only skip motion when definitively true
+  if (reduce === true) {
     return <div className={className}>{children}</div>;
   }
 

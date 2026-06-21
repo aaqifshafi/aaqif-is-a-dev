@@ -66,7 +66,7 @@ export function CommandMenu({ className }: CommandMenuProps) {
         onClick={() => setOpen(true)}
         aria-label="Open command menu"
         className={cn(
-          "group hidden items-center gap-2 border border-outline-variant bg-surface px-3 py-1.5 text-outline transition-colors hover:border-outline md:flex",
+          "group hidden items-center gap-2 border border-outline-variant bg-surface px-3 py-1.5 text-outline transition-colors hover:border-outline md:flex cursor-pointer",
           className,
         )}
       >
