@@ -5,7 +5,6 @@ import {
   IconBook,
   IconCpu,
   IconFileText,
-  IconFolderCode,
   IconMoon,
   IconRosetteDiscountCheck,
   IconSearch,
@@ -31,7 +30,6 @@ import { cn } from "@/lib/utils";
 
 const sections = [
   { id: "stack", label: "Tech Stack", icon: IconCpu },
-  { id: "projects", label: "Projects", icon: IconFolderCode },
   { id: "certifications", label: "Certifications", icon: IconRosetteDiscountCheck },
 ] as const;
 
@@ -108,7 +106,7 @@ export function CommandMenu({ className }: CommandMenuProps) {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Pages">
-            <CommandItem value="Work" onSelect={() => runCommand(() => router.push("/work"))}>
+            <CommandItem value="Work" onSelect={() => runCommand(() => router.push("/#work"))}>
               <IconStack2 className="size-4 text-outline" />
               Work
             </CommandItem>

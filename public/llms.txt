@@ -25,10 +25,7 @@ This file follows the llms.txt convention (https://llmstxt.org) to give language
 - Payoll Payments LLC — Software Engineering Intern (Sep 2024 – Jan 2025)
   B2B payments consolidation API and Ared carbon footprint calculator with carbon credit marketplace. Express, Vite, PostgreSQL.
 
-## Projects
-
-- Chat With PDF: Conversational AI for semantic document search. Next.js, LangChain, Pinecone, OpenAI. https://github.com/aaqifshafi/chat-with-pdf
-- College Management System: Full-stack educational platform with Stripe payments, AI question paper generation, student and admin portals. https://github.com/aaqifshafi/G-CET
+Each role has a detailed case study at https://aaqif.is-a.dev/work/<slug> (designfolio, gistr, payoll).
 
 ## Tech Stack
 
@@ -50,9 +47,7 @@ Tools: Git, GitHub, Vite, Bun, VS Code
 
 ## Sections
 
-- [Work](https://aaqif.is-a.dev/work): Detailed case studies for each role.
-- [Experience](https://aaqif.is-a.dev/#experience): Work history overview on the homepage.
-- [Projects](https://aaqif.is-a.dev/#projects): Selected projects with stacks and links.
+- [Work](https://aaqif.is-a.dev/#work): Roles and companies, each linking to a detailed case study.
 - [Tech Stack](https://aaqif.is-a.dev/#stack): Languages, frameworks, and tools.
 - [Contributions](https://aaqif.is-a.dev/#contributions): GitHub contribution activity.
 - [Certifications](https://aaqif.is-a.dev/#certifications): Credentials and certificates.
