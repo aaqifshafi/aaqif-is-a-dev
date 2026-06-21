@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { workIcons } from "@/components/icons/work-icons";
 import { Reveal } from "@/components/reveal";
+import { ScrambleLink } from "@/components/scramble-link";
 import { SiteFooter } from "@/components/site-footer";
 import { TopNav } from "@/components/top-nav";
 import { WorkImage } from "@/components/work-image";
@@ -86,15 +87,16 @@ export default async function WorkDetailPage({
                 </div>
               </div>
               {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex shrink-0 items-center gap-1 font-technical text-[11px] text-outline transition-colors hover:text-primary"
-                >
-                  {project.liveLabel ?? project.liveUrl}
-                  <IconArrowUpRight className="size-3.5 transition-transform duration-200 ease-snappy group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+                <span className="group flex shrink-0 items-center gap-1 font-technical text-[11px] text-outline">
+                  <ScrambleLink
+                    href={project.liveUrl}
+                    external
+                    className="transition-colors hover:text-primary"
+                  >
+                    {project.liveLabel ?? project.liveUrl}
+                  </ScrambleLink>
+                  <IconArrowUpRight className="size-3.5 text-outline transition-[transform,color] duration-200 ease-snappy group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                </span>
               )}
             </div>
           </Reveal>
