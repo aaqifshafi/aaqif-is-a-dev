@@ -64,38 +64,42 @@ const techIcons: Record<TechIconKey, TechIcon> = {
   terminal:   withColor(IconTerminal,        "#4EAA25"),
 };
 
+type TechChipProps = { icon: TechIcon; name: string; url?: string };
+
+function TechChip({ icon: Icon, name, url }: TechChipProps) {
+  const className =
+    "flex items-center gap-1.5 rounded-md border border-border bg-surface/60 px-2.5 py-1.5 font-technical text-xs text-on-surface-variant transition-colors hover:border-outline hover:text-primary";
+
+  if (url) {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer" className={className}>
+        <Icon className="size-4 shrink-0" />
+        <span>{name}</span>
+      </a>
+    );
+  }
+
+  return (
+    <div className={className}>
+      <Icon className="size-4 shrink-0" />
+      <span>{name}</span>
+    </div>
+  );
+}
+
 export function TechStack() {
   return (
     <SectionShell id="stack" kicker="tools" title="Tech Stack">
       <Reveal>
         <div className="flex flex-wrap gap-2">
-          {techStack.map((tech) => {
-            const Icon = techIcons[tech.icon];
-            const chipClass =
-              "flex items-center gap-1.5 rounded-md border border-border bg-surface/60 px-2.5 py-1.5 font-technical text-xs text-on-surface-variant transition-colors hover:border-outline hover:text-primary";
-
-            if (tech.url) {
-              return (
-                <a
-                  key={tech.name}
-                  href={tech.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={chipClass}
-                >
-                  <Icon className="size-4 shrink-0" />
-                  <span>{tech.name}</span>
-                </a>
-              );
-            }
-
-            return (
-              <div key={tech.name} className={chipClass}>
-                <Icon className="size-4 shrink-0" />
-                <span>{tech.name}</span>
-              </div>
-            );
-          })}
+          {techStack.map((tech) => (
+            <TechChip
+              key={tech.name}
+              icon={techIcons[tech.icon]}
+              name={tech.name}
+              url={tech.url}
+            />
+          ))}
         </div>
       </Reveal>
     </SectionShell>
