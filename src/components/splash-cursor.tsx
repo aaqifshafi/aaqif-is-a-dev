@@ -400,6 +400,7 @@ export function SplashCursor({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!canvasRef.current) return;
     const canvas: HTMLCanvasElement = canvasRef.current;
 
@@ -643,34 +644,34 @@ export function SplashCursor({
     }
 
     const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
-    let simRes = getResolution(gl, config.SIM_RESOLUTION);
-    let dyeRes = getResolution(gl, config.DYE_RESOLUTION);
+    const simRes = getResolution(gl, config.SIM_RESOLUTION);
+    const dyeRes = getResolution(gl, config.DYE_RESOLUTION);
 
-    let velocity = createDoubleFBO(
+    const velocity = createDoubleFBO(
       simRes.width, simRes.height,
       ext.formatRG?.internalFormat ?? gl.RGBA,
       ext.formatRG?.format ?? gl.RGBA,
       ext.halfFloatTexType, filtering,
     );
-    let dye = createDoubleFBO(
+    const dye = createDoubleFBO(
       dyeRes.width, dyeRes.height,
       ext.formatRGBA?.internalFormat ?? gl.RGBA,
       ext.formatRGBA?.format ?? gl.RGBA,
       ext.halfFloatTexType, filtering,
     );
-    let divergence = createFBO(
+    const divergence = createFBO(
       simRes.width, simRes.height,
       ext.formatR?.internalFormat ?? gl.RGBA,
       ext.formatR?.format ?? gl.RGBA,
       ext.halfFloatTexType, gl.NEAREST,
     );
-    let curl = createFBO(
+    const curl = createFBO(
       simRes.width, simRes.height,
       ext.formatR?.internalFormat ?? gl.RGBA,
       ext.formatR?.format ?? gl.RGBA,
       ext.halfFloatTexType, gl.NEAREST,
     );
-    let pressure = createDoubleFBO(
+    const pressure = createDoubleFBO(
       simRes.width, simRes.height,
       ext.formatR?.internalFormat ?? gl.RGBA,
       ext.formatR?.format ?? gl.RGBA,
@@ -779,7 +780,7 @@ export function SplashCursor({
       gl.uniform2f(advectionProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY);
       if (!ext.supportLinearFiltering)
         gl.uniform2f(advectionProgram.uniforms.dyeTexelSize, velocity.texelSizeX, velocity.texelSizeY);
-      let vel0 = velocity.read.attach(0);
+      const vel0 = velocity.read.attach(0);
       gl.uniform1i(advectionProgram.uniforms.uVelocity, vel0);
       gl.uniform1i(advectionProgram.uniforms.uSource, vel0);
       gl.uniform1f(advectionProgram.uniforms.dt, dt);

@@ -1,3 +1,5 @@
+export type ActiveBadgeProps = Record<string, never>;
+
 export function ActiveBadge() {
   return (
     <span className="flex shrink-0 items-center gap-1 font-technical text-[10px] text-[hsl(var(--color-success))]">
