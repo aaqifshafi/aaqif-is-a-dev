@@ -1,13 +1,24 @@
 import { ImageResponse } from "next/og";
 import { loadOgFonts, OG } from "@/lib/og-fonts";
+import { work } from "@/lib/portfolio-data";
 
 export const runtime = "nodejs";
-export const alt = "Aaqif Shafi — Full-Stack Product Engineer";
+export const alt = "Work — Aaqif Shafi";
 export const size = { width: OG.W, height: OG.H };
 export const contentType = "image/png";
 
-export default async function OpengraphImage() {
+type Params = { slug: string };
+
+export default async function WorkOpengraphImage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const project = work.find((p) => p.slug === slug);
   const fonts = await loadOgFonts();
+
+  const company  = project?.company  ?? "Work";
+  const role     = project?.role     ?? "";
+  const period   = project?.period   ?? "";
+  const blurb    = project?.blurb    ?? "";
+  const truncated = blurb.length > 120 ? blurb.slice(0, 118) + "…" : blurb;
 
   return new ImageResponse(
     (
@@ -25,51 +36,35 @@ export default async function OpengraphImage() {
           fontFamily: "GeistMono",
         }}
       >
-        {/* Top — name + role */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {/* Top — attribution */}
+        <div
+          style={{
+            display: "flex",
+            fontFamily: "GeistPixel",
+            fontSize: 40,
+            fontWeight: 400,
+            color: OG.SUBTLE,
+            letterSpacing: "2px",
+            lineHeight: 1,
+          }}
+        >
+          AAQIF SHAFI
+        </div>
+
+        {/* Middle — project name + role + blurb */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div
             style={{
               display: "flex",
               fontFamily: "GeistPixel",
-              fontSize: 96,
+              fontSize: 80,
               fontWeight: 400,
               color: OG.PRIMARY,
               letterSpacing: "2px",
               lineHeight: 1,
             }}
           >
-            AAQIF SHAFI
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "GeistMono",
-              fontSize: 26,
-              fontWeight: 400,
-              color: OG.MUTED,
-              letterSpacing: "0.02em",
-            }}
-          >
-            Full-Stack Product Engineer
-          </div>
-        </div>
-
-        {/* Middle — main headline */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              fontFamily: "GeistSans",
-              fontSize: 64,
-              fontWeight: 700,
-              color: OG.PRIMARY,
-              letterSpacing: "-2px",
-              lineHeight: 1.1,
-              maxWidth: 900,
-            }}
-          >
-            I build products from idea to production.
+            {company.toUpperCase()}
           </div>
           <div
             style={{
@@ -78,10 +73,24 @@ export default async function OpengraphImage() {
               fontSize: 24,
               fontWeight: 400,
               color: OG.MUTED,
-              letterSpacing: "0.04em",
+              letterSpacing: "0.02em",
             }}
           >
-            Frontend · Backend · Cloud & AI
+            {role} · {period}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "GeistMono",
+              fontSize: 20,
+              fontWeight: 400,
+              color: OG.SUBTLE,
+              letterSpacing: "0.02em",
+              lineHeight: 1.5,
+              maxWidth: 920,
+            }}
+          >
+            {truncated}
           </div>
         </div>
 
@@ -97,7 +106,7 @@ export default async function OpengraphImage() {
               letterSpacing: "0.04em",
             }}
           >
-            aaqif.is-a.dev
+            aaqif.is-a.dev/work/{slug}
           </div>
         </div>
       </div>

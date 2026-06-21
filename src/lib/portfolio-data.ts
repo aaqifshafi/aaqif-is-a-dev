@@ -17,7 +17,7 @@ export const profile = {
   photo: "/avatar.png",
   location: "Kashmir, India",
   timezone: "Asia/Kolkata",
-  available: true,
+  available: false,
   email: "aaqifshafi@gmail.com",
   tagline:
     "I ship products that work — APIs, event-driven pipelines, modern frontends, and everything in between. Building full-stack from Kashmir.",
