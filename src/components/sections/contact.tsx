@@ -36,7 +36,7 @@ export function Contact() {
                 Message sent!
               </p>
               <p className="font-technical text-xs text-on-surface-variant">
-                I'll get back to you soon. A confirmation has been sent to your inbox.
+                I&apos;ll get back to you soon. A confirmation has been sent to your inbox.
               </p>
             </div>
           </div>

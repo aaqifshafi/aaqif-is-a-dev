@@ -24,7 +24,7 @@ export type Book = {
   author: string;
 };
 
-export type ExperienceIcon = "boxes" | "terminal" | "gistr" | "wallet";
+export type ExperienceIcon = "boxes" | "terminal" | "gistr" | "wallet" | "designfolio";
 
 export type ExperienceRole = {
   company: string;
@@ -34,8 +34,12 @@ export type ExperienceRole = {
   /** Date range, e.g. "01.2026 — ∞". */
   period: string;
   icon: ExperienceIcon;
+  /** URL slug for the /work case study page. */
+  slug: string;
   /** Marks the current role (renders the glowing blue status dot). */
   active?: boolean;
+  /** One-line summary shown in the homepage accordion. */
+  blurb?: string;
   highlights: string[];
   tags: string[];
 };

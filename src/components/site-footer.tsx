@@ -99,7 +99,7 @@ export function SiteFooter() {
       <div className="mx-auto flex w-full max-w-2xl flex-col items-start justify-between gap-4 border-t border-border/40 px-5 py-5 font-technical text-[11px] text-outline sm:flex-row sm:items-center sm:px-6">
         <div className="flex gap-4">
           {footer.links.map((link) => (
-            <ScrambleLink key={link.label} href={link.href} className={underline}>
+            <ScrambleLink key={link.label} href={link.href} external className={underline}>
               {link.label}
             </ScrambleLink>
           ))}

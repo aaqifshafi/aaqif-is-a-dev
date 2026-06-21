@@ -3,6 +3,7 @@ import { CommandMenu } from "@/components/command-menu";
 import { Reveal } from "@/components/reveal";
 import { ScrambleLink } from "@/components/scramble-link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { bootDelay } from "@/lib/motion";
 import { navLinks } from "@/lib/portfolio-data";
 
@@ -34,8 +35,28 @@ export function TopNav() {
           </div>
         </Reveal>
         <Reveal immediate delay={bootDelay.navActions} className="flex items-center gap-2">
-          <CommandMenu />
-          <ThemeToggle />
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span>
+                <CommandMenu />
+              </span>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" sideOffset={8}>
+              <span className="font-technical text-[10px]">Search</span>
+              <kbd data-slot="kbd" className="ml-1 font-technical text-[10px] opacity-70">⌘K</kbd>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span>
+                <ThemeToggle />
+              </span>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" sideOffset={8}>
+              <span className="font-technical text-[10px]">Toggle theme</span>
+              <kbd data-slot="kbd" className="ml-1 font-technical text-[10px] opacity-70">T</kbd>
+            </TooltipContent>
+          </Tooltip>
         </Reveal>
       </div>
     </nav>

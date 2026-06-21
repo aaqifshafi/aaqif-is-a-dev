@@ -25,7 +25,7 @@ export const profile = {
 } as const;
 
 export const navLinks: NavLink[] = [
-  { label: "Work", href: "#experience" },
+  { label: "Work", href: "/work" },
   { label: "Projects", href: "#projects" },
   { label: "Blog", href: "/blog" },
 ];
@@ -33,7 +33,7 @@ export const navLinks: NavLink[] = [
 export const manifest: ManifestItem[] = [
   { sigil: "~", value: "Kashmir, IN" },
   { sigil: "@", value: "aaqifshafi@gmail.com" },
-  { sigil: ">", value: "Fullstack Eng @Gistr" },
+  { sigil: ">", value: "Fullstack Eng @Designfolio" },
 ];
 
 export const socialLinks: SocialLink[] = [
@@ -50,24 +50,43 @@ export const readingList: Book[] = [];
 
 export const experience: ExperienceRole[] = [
   {
+    company: "Designfolio",
+    role: "Full-Stack Product Engineer",
+    type: "Full-time",
+    period: "05.2026 — ∞",
+    icon: "designfolio",
+    slug: "designfolio",
+    active: true,
+    blurb:
+      "Building end-to-end at Designfolio — a portfolio builder for designers and developers. Own the jobs board (scraping, Kanban + AI match scoring), mock interview, resume tailor, and cover letter generation. Also shipped the Tiptap case study editor and dynamic portfolio templates.",
+    highlights: [
+      "Built the full jobs board: scraping + aggregation pipeline, Kanban tracking across application stages, AI match scoring against the user's portfolio, and match-reason explanations.",
+      "Implemented context-aware AI tools: mock interview, resume tailor, and cover letter generation — all grounded in the user's actual portfolio data.",
+      "Shipped Tiptap-based case study editor, dynamic field system, and multiple designed portfolio templates.",
+    ],
+    tags: ["Next.js", "NestJS", "TypeScript", "Tiptap", "PostgreSQL", "AI"],
+  },
+  {
     company: "Gistr Technologies",
     role: "Fullstack Product Engineer",
     type: "Full-time",
-    period: "01.2025 — ∞",
+    period: "01.2025 — 04.2026",
     icon: "gistr",
-    active: true,
+    slug: "gistr",
+    blurb:
+      "Shipped features across the full stack for Gistr's AI knowledge workspace — multi-format ingestion (PDF, EPUB, DOCX, PPTX, podcasts, web), a credit-based billing system with Dodo Payments, async job queues with BullMQ, PostHog analytics, and core AI features like smart questions, OCR, and export.",
     highlights: [
       "Own end-to-end product features across frontend and backend for the core Gistr platform.",
-      "Integrated payment gateways for secure subscription and billing flows; built async job queues with BullMQ.",
-      "Built the AI-powered Gistr product with Next.js SSR/SSG, monorepo architecture, and CI/CD pipelines.",
-      "Integrated PostHog for product analytics, user interaction tracking, and performance insights.",
+      "Built credit-based billing with Dodo Payments integration, frontend pricing page, and plan restriction enforcement.",
+      "Built async job queues with BullMQ; integrated PostHog for product analytics and user interaction tracking.",
+      "Shipped core AI features: smart questions, OCR, language translation, YouTube screenshots, highlights, export.",
     ],
     tags: [
       "NestJS",
       "TypeScript",
       "Next.js",
       "BullMQ",
-      "AWS Lambda",
+      "Dodo Payments",
       "PostHog",
       "MongoDB",
     ],
@@ -78,11 +97,14 @@ export const experience: ExperienceRole[] = [
     type: "Intern",
     period: "09.2024 — 01.2025",
     icon: "wallet",
+    slug: "payoll",
+    blurb:
+      "Built full-stack features for Payoll's B2B payment consolidation API, and contributed to Ared — an AI-powered carbon footprint calculator with an integrated carbon credit marketplace.",
     highlights: [
       "Built full-stack features for Payoll API — a B2B payment service consolidating multiple billers into one platform.",
       "Contributed to Ared, an AI-powered carbon footprint calculator with integrated carbon credit marketplace.",
     ],
-    tags: ["express", "Vite", "PostgreSQL", "javascript", "Redux", "Redis"],
+    tags: ["Express", "Vite", "PostgreSQL", "JavaScript", "Redux", "Redis"],
   },
 ];
 

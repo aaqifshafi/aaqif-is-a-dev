@@ -17,6 +17,8 @@ export function SocialChip({ label, href }: SocialChipProps) {
     <Magnetic strength={2}>
       <a
         href={href}
+        target="_blank"
+        rel="noopener noreferrer"
         onPointerEnter={scramble}
         aria-label={label}
         className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 font-technical text-[11px] text-on-surface-variant transition-[color,border-color,transform] duration-150 ease-snappy hover:border-outline hover:text-primary active:scale-[0.97]"

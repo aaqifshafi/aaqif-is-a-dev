@@ -16,11 +16,14 @@ This file follows the llms.txt convention (https://llmstxt.org) to give language
 
 ## Experience
 
-- Gistr Technologies — Fullstack Product Engineer (Jan 2025 – Present)
-  End-to-end product ownership. NestJS, Next.js, BullMQ, AWS Lambda, PostHog. Payment gateways, CI/CD, monorepo architecture.
+- Designfolio — Full-Stack Product Engineer (May 2026 – Present)
+  Portfolio builder for designers and developers. Built the full jobs board (scraping, Kanban, AI match scoring), mock interview, resume tailor, cover letter generation, Tiptap case study editor, and dynamic templates. Next.js, NestJS, TypeScript, Tiptap, PostgreSQL.
+
+- Gistr Technologies — Fullstack Product Engineer (Jan 2025 – Apr 2026)
+  AI knowledge workspace. File ingestion pipelines (PDF, EPUB, DOCX, PPTX, podcasts, web), credit-based billing with Dodo Payments, BullMQ job queues, PostHog analytics, core AI features. NestJS, Next.js, BullMQ, MongoDB.
 
 - Payoll Payments LLC — Software Engineering Intern (Sep 2024 – Jan 2025)
-  B2B payments platform and Ared carbon footprint calculator. NestJS, Vite, PostgreSQL.
+  B2B payments consolidation API and Ared carbon footprint calculator with carbon credit marketplace. Express, Vite, PostgreSQL.
 
 ## Projects
 
@@ -47,7 +50,8 @@ Tools: Git, GitHub, Vite, Bun, VS Code
 
 ## Sections
 
-- [Experience](https://aaqif.is-a.dev/#experience): Work history and roles.
+- [Work](https://aaqif.is-a.dev/work): Detailed case studies for each role.
+- [Experience](https://aaqif.is-a.dev/#experience): Work history overview on the homepage.
 - [Projects](https://aaqif.is-a.dev/#projects): Selected projects with stacks and links.
 - [Tech Stack](https://aaqif.is-a.dev/#stack): Languages, frameworks, and tools.
 - [Contributions](https://aaqif.is-a.dev/#contributions): GitHub contribution activity.

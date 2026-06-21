@@ -30,7 +30,6 @@ import { setThemeWithTransition } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
 const sections = [
-  { id: "experience", label: "Work / Experience", icon: IconStack2 },
   { id: "stack", label: "Tech Stack", icon: IconCpu },
   { id: "projects", label: "Projects", icon: IconFolderCode },
   { id: "certifications", label: "Certifications", icon: IconRosetteDiscountCheck },
@@ -109,6 +108,10 @@ export function CommandMenu({ className }: CommandMenuProps) {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Pages">
+            <CommandItem value="Work" onSelect={() => runCommand(() => router.push("/work"))}>
+              <IconStack2 className="size-4 text-outline" />
+              Work
+            </CommandItem>
             <CommandItem value="Blog" onSelect={() => runCommand(() => router.push("/blog"))}>
               <IconBook className="size-4 text-outline" />
               Blog

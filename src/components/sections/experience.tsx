@@ -1,10 +1,23 @@
-import { IconBoxMultiple, IconTerminal2, IconWallet } from "@tabler/icons-react";
+"use client";
+
+import {
+  IconBoxMultiple,
+  IconBriefcase2,
+  IconChevronUp,
+  IconTerminal2,
+  IconWallet,
+} from "@tabler/icons-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Link from "next/link";
+import { useState } from "react";
 import type { ComponentType } from "react";
 
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/sections/section-shell";
 import { experience } from "@/lib/portfolio-data";
+import { easeSnappy } from "@/lib/motion";
 import type { ExperienceIcon } from "@/types/portfolio";
+import { cn } from "@/lib/utils";
 
 type IconProps = { className?: string; size?: number };
 type AnyIcon = ComponentType<IconProps>;
@@ -21,76 +34,108 @@ function GistrIcon({ className }: IconProps) {
 }
 
 const experienceIcons: Record<ExperienceIcon, AnyIcon> = {
-  boxes:    IconBoxMultiple,
+  boxes: IconBoxMultiple,
   terminal: IconTerminal2,
-  gistr:    GistrIcon,
-  wallet:   IconWallet,
+  gistr: GistrIcon,
+  wallet: IconWallet,
+  designfolio: IconBriefcase2,
 };
+
+type ItemProps = {
+  role: (typeof experience)[number];
+  defaultOpen?: boolean;
+};
+
+function ExperienceItem({ role, defaultOpen = true }: ItemProps) {
+  const [open, setOpen] = useState(defaultOpen);
+  const reduce = useReducedMotion();
+  const Icon = experienceIcons[role.icon];
+
+  return (
+    <div className="flex flex-col">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="group flex w-full cursor-pointer items-center justify-between gap-3 py-3 text-left"
+      >
+        <div className="flex min-w-0 items-center gap-3">
+          <motion.div
+            animate={{ rotate: open ? 0 : 180 }}
+            transition={{ duration: 0.2, ease: easeSnappy }}
+          >
+            <IconChevronUp className="size-3 shrink-0 text-outline transition-colors group-hover:text-on-surface-variant" />
+          </motion.div>
+
+          <div className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-border bg-surface">
+            <Icon className="size-3.5 text-on-surface-variant" />
+          </div>
+
+          <div className="flex min-w-0 items-center gap-2">
+            <Link
+              href={`/work/${role.slug}`}
+              onClick={(e) => e.stopPropagation()}
+              className="font-pixel text-sm text-primary transition-opacity hover:opacity-70"
+            >
+              {role.company}
+            </Link>
+            {role.active && (
+              <span className="flex shrink-0 items-center gap-1 font-technical text-[10px] text-[hsl(var(--color-success))]">
+                <span className="relative flex size-1.5">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-current" />
+                </span>
+                now
+              </span>
+            )}
+          </div>
+        </div>
+
+        <span className="hidden shrink-0 font-technical text-[11px] text-outline sm:block">
+          {role.role} · {role.period}
+        </span>
+      </button>
+
+      {/* Mobile: role + period below the header row */}
+      <span className="mb-1 pl-[52px] font-technical text-[11px] text-outline sm:hidden">
+        {role.role} · {role.period}
+      </span>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="content"
+            initial={reduce ? false : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={reduce ? {} : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: easeSnappy }}
+            className="overflow-hidden"
+          >
+            <p
+              className={cn(
+                "pb-3 font-technical text-xs leading-relaxed text-on-surface-variant",
+                "pl-[52px]", // indent: chevron(12) + gap(12) + icon(28) = 52px
+              )}
+            >
+              {role.blurb ?? role.highlights[0]}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function Experience() {
   return (
     <SectionShell id="experience" kicker="work" title="Experience">
-      <div className="flex flex-col gap-6">
-        {experience.map((role) => {
-          const Icon = experienceIcons[role.icon];
-          return (
-            <Reveal key={role.company}>
-              <div className="rounded-xl border border-border bg-surface/40 p-5 sm:p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-border bg-surface">
-                      <Icon className="size-4 text-on-surface-variant" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-pixel text-sm text-primary">{role.company}</span>
-                        {role.active && (
-                          <span className="flex items-center gap-1 font-technical text-[10px] text-[hsl(var(--color-success))]">
-                            <span className="relative flex size-1.5">
-                              <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75" />
-                              <span className="relative inline-flex size-1.5 rounded-full bg-current" />
-                            </span>
-                            active
-                          </span>
-                        )}
-                      </div>
-                      <span className="font-technical text-[11px] text-outline">
-                        {role.role} · {role.type}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="shrink-0 font-technical text-[11px] text-outline">
-                    {role.period}
-                  </span>
-                </div>
-
-                <ul className="mt-4 flex flex-col gap-1.5 pl-1">
-                  {role.highlights.map((line) => (
-                    <li
-                      key={line}
-                      className="flex gap-2 font-technical text-xs text-on-surface-variant"
-                    >
-                      <span className="mt-px shrink-0 text-outline">–</span>
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {role.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md border border-border px-2 py-0.5 font-technical text-[11px] text-outline"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          );
-        })}
-      </div>
+      <Reveal>
+        <div className="divide-y divide-border rounded-xl border border-border bg-surface/40 px-5 sm:px-6">
+          {experience.map((role) => (
+            <ExperienceItem key={role.company} role={role} />
+          ))}
+        </div>
+      </Reveal>
     </SectionShell>
   );
 }
