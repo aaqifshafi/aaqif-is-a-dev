@@ -27,7 +27,7 @@ export const GistrIcon = ({ className }: IconProps) => (
 
 export const ClaudeIcon = ({ className }: IconProps) => (
   <img
-    src="/assets/brandLogos/claude.svg"
+    src="/assets/brandlogos/claude.svg"
     className={className}
     alt=""
     aria-hidden="true"
@@ -36,7 +36,7 @@ export const ClaudeIcon = ({ className }: IconProps) => (
 
 export const CursorIcon = ({ className }: IconProps) => (
   <img
-    src="/assets/brandLogos/cursor.svg"
+    src="/assets/brandlogos/cursor.svg"
     className={className}
     alt=""
     aria-hidden="true"
@@ -45,7 +45,7 @@ export const CursorIcon = ({ className }: IconProps) => (
 
 export const BunIcon = ({ className }: IconProps) => (
   <img
-    src="/assets/brandLogos/bun.svg"
+    src="/assets/brandlogos/bun.svg"
     className={className}
     alt=""
     aria-hidden="true"

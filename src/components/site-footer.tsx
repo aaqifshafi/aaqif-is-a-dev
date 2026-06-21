@@ -60,11 +60,11 @@ function Signature({ className }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 max-w-2xl mx-auto">
+    <footer className="w-full border-t border-border/60 max-w-2xl mx-auto">
       {/* Inspired by */}
-      <div className="mx-auto w-full max-w-2xl px-5 pt-8 pb-2 sm:px-6">
-        <p className="font-technical text-[11px] leading-relaxed text-outline/50">
-          <span>Inspired by </span>
+      <div className="mx-auto w-full max-w-2xl overflow-hidden px-5 pt-8 pb-2 sm:px-6">
+        <div className="flex flex-wrap items-baseline gap-x-0 gap-y-0.5 font-technical text-[11px] leading-relaxed text-outline/50">
+          <span className="mr-1">Inspired by</span>
           {inspirations.map((item, i) => (
             <Fragment key={item.href}>
               <ScrambleLink
@@ -87,7 +87,7 @@ export function SiteFooter() {
           >
             open sourced on GitHub
           </ScrambleLink>
-        </p>
+        </div>
       </div>
 
       {/* Signature */}
@@ -97,7 +97,7 @@ export function SiteFooter() {
 
       {/* Bottom bar */}
       <div className="mx-auto flex w-full max-w-2xl flex-col items-start justify-between gap-4 border-t border-border/40 px-5 py-5 font-technical text-[11px] text-outline sm:flex-row sm:items-center sm:px-6">
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           {footer.links.map((link) => (
             <ScrambleLink key={link.label} href={link.href} external className={underline}>
               {link.label}

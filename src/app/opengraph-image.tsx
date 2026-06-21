@@ -17,11 +17,10 @@ const SUBTLE  = "#444748";
 const GRID    = "rgba(255,255,255,0.035)";
 
 export default async function OpengraphImage() {
-  // satori (next/og) cannot parse woff2 — load the TTF builds the package ships.
-  // Geist Pixel only ships as woff2, so the wordmark uses Geist Sans bold here.
-  const [geistSansBold, geistMonoRegular] = await Promise.all([
+  const [geistSansBold, geistMonoRegular, geistPixelSquare] = await Promise.all([
     readFile(path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-Bold.ttf")),
     readFile(path.join(process.cwd(), "node_modules/geist/dist/fonts/geist-mono/GeistMono-Regular.ttf")),
+    readFile(path.join(process.cwd(), "public/fonts/GeistPixel-Square.ttf")),
   ]);
 
   return new ImageResponse(
@@ -45,11 +44,11 @@ export default async function OpengraphImage() {
           <div
             style={{
               display: "flex",
-              fontFamily: "GeistSans",
+              fontFamily: "GeistPixel",
               fontSize: 96,
-              fontWeight: 700,
+              fontWeight: 400,
               color: PRIMARY,
-              letterSpacing: "-3px",
+              letterSpacing: "2px",
               lineHeight: 1,
             }}
           >
@@ -120,8 +119,9 @@ export default async function OpengraphImage() {
     {
       ...size,
       fonts: [
-        { name: "GeistSans", data: geistSansBold, weight: 700, style: "normal" },
-        { name: "GeistMono", data: geistMonoRegular, weight: 400, style: "normal" },
+        { name: "GeistSans",  data: geistSansBold,     weight: 700, style: "normal" },
+        { name: "GeistMono",  data: geistMonoRegular,   weight: 400, style: "normal" },
+        { name: "GeistPixel", data: geistPixelSquare,   weight: 400, style: "normal" },
       ],
     },
   );
