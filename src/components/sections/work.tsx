@@ -1,9 +1,11 @@
 import { IconArrowUpRight } from "@tabler/icons-react";
 import Link from "next/link";
 
+import { ActiveBadge } from "@/components/active-badge";
 import { workIcons } from "@/components/icons/work-icons";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/sections/section-shell";
+import { TagChip } from "@/components/tag-chip";
 import { WorkImage } from "@/components/work-image";
 import { work } from "@/lib/portfolio-data";
 import type { WorkProject } from "@/types/portfolio";
@@ -34,15 +36,7 @@ function WorkCard({ project }: { project: WorkProject }) {
               <div className="flex flex-col gap-0.5">
                 <div className="flex items-center gap-2">
                   <span className="font-pixel text-sm text-primary">{project.company}</span>
-                  {project.active && (
-                    <span className="flex shrink-0 items-center gap-1 font-technical text-[10px] text-[hsl(var(--color-success))]">
-                      <span className="relative flex size-1.5">
-                        <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75" />
-                        <span className="relative inline-flex size-1.5 rounded-full bg-current" />
-                      </span>
-                      now
-                    </span>
-                  )}
+                  {project.active && <ActiveBadge />}
                 </div>
                 <span className="font-technical text-[11px] text-outline">
                   {project.role} · {project.period}
@@ -58,12 +52,7 @@ function WorkCard({ project }: { project: WorkProject }) {
 
           <div className="flex flex-wrap gap-1.5">
             {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md border border-border px-2 py-0.5 font-technical text-[11px] text-outline"
-              >
-                {tag}
-              </span>
+              <TagChip key={tag} tag={tag} />
             ))}
           </div>
         </div>
