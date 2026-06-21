@@ -1,6 +1,6 @@
 type IconProps = { className?: string };
 
-/** Designfolio brand mark — gradient circle + white starburst. */
+/** Designfolio mark — starburst glyph (inline SVG so it inherits currentColor). */
 export const DesignfolioIcon = ({ className }: IconProps) => (
   <svg
     viewBox="0 0 124.5 124.5"
@@ -8,24 +8,10 @@ export const DesignfolioIcon = ({ className }: IconProps) => (
     aria-hidden="true"
     className={className}
   >
-    <rect width="124.5" height="124.5" rx="62.25" fill="url(#df-logo-gradient)" />
     <path
       d="M67.437 15.5625H57.062V49.7263L32.9046 25.5688L25.5683 32.9051L49.7258 57.0625H15.562V67.4375H49.7258L25.5684 91.5949L32.9046 98.9311L57.062 74.7737V108.937H67.437V74.7737L91.5944 98.9312L98.9307 91.5949L74.7732 67.4375H108.937V57.0625H74.7732L98.9307 32.9051L91.5944 25.5688L67.437 49.7263V15.5625Z"
-      fill="white"
+      fill="currentColor"
     />
-    <defs>
-      <linearGradient
-        id="df-logo-gradient"
-        x1="62.25"
-        y1="0"
-        x2="62.25"
-        y2="124.5"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#FFDCD7" />
-        <stop offset="0.788462" stopColor="#FF553E" />
-      </linearGradient>
-    </defs>
   </svg>
 );
 
