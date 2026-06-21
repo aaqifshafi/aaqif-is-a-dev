@@ -60,7 +60,7 @@ function Signature({ className }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60">
+    <footer className="border-t border-border/60 max-w-2xl mx-auto">
       {/* Inspired by */}
       <div className="mx-auto w-full max-w-2xl px-5 pt-8 pb-2 sm:px-6">
         <p className="font-technical text-[11px] leading-relaxed text-outline/50">

@@ -41,7 +41,7 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn",
     href: "https://linkedin.com/in/aaqifshafi",
   },
-  { index: "03", label: "Twitter / X", href: "#" },
+  { index: "03", label: "Twitter / X", href: "https://x.com/aaqifshafi" },
 ];
 
 export const readingList: Book[] = [];

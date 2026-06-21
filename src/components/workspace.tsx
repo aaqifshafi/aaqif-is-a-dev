@@ -9,9 +9,9 @@ import { Work } from "@/components/sections/work";
 export function Workspace() {
   return (
     <div className="flex flex-col gap-16 pb-24 sm:gap-20">
-      <Work />
       <TechStack />
       <ContributionsHeatmap />
+      <Work />
       <Certifications />
       <Reading />
       <Contact />
