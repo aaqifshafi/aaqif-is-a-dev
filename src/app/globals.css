@@ -312,7 +312,7 @@
   --rail-gap: 3px;
 
   --hatch-line: 1px;
-  --hatch-gap: 5px;
+  --hatch-gap: 6px;
 }
 
 /* Diagonal hatch that fills the page margins beside a section-header band.
