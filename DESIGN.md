@@ -11,12 +11,18 @@ Clean, calm, **single-column** personal portfolio. Modern and tasteful first; pe
 second. The few signatures that carry the "builds software" identity: a **Geist Pixel**
 wordmark/name, small **mono `//` kickers** above section headings, a **single electric-blue
 accent**, an emerald **live-status** color, a ⌘K command menu, and a GitHub-style contribution
-graph. A **very faint** blueprint grid sits behind everything as texture (masked so it fades),
-never as structure. Density is **low-to-moderate** — whitespace does the work.
+graph. A **blueprint grid frames** the page: two hairline rails at the content column's edges,
+full-bleed rules between sections, and diagonal hatching in the margins beside each section
+header. This is structure, deliberately — it is what gives a narrow single column an
+architectural read instead of leaving it floating in space. Density stays **low-to-moderate**
+— the frame does the structural work so whitespace can stay generous inside it.
 
 History: this replaced an earlier dense "Monolith Engine" terminal aesthetic (blueprint grid,
 line-number gutter, `const x = [ … ];` code-bar section framing, sharp 0px corners, two-column
-app shell). All of that was intentionally retired for the calmer, more modern direction.
+app shell). All of that was intentionally retired for the calmer, more modern direction. The
+grid frame was later reintroduced as deliberate page structure — it is *not* a revival of the
+retired gutter or code-bars, which stay banned (§9); it is a single quiet frame around an
+otherwise unchanged, calm layout.
 
 ## 2. Color & roles
 
@@ -52,8 +58,15 @@ Loaded via the official `geist` npm package (self-hosted, zero layout shift). On
 - **Structure:** sticky slim `TopNav` (pixel wordmark + in-page links · ⌘K · theme toggle) →
   `ProfileHeader` (monogram + name, status line, bio, contact row) → stacked sections
   (`gap-16 sm:gap-20`) → `SiteFooter`.
-- **Sections:** each is a `SectionShell` — a mono `// kicker` (accent-blue) over a Geist heading,
-  then content. No code-bar framing, no closing brackets.
+- **Grid frame:** every block renders a `GridColumn` (`src/components/grid-frame.tsx`) — a centered
+  `max-w-2xl` box whose side borders stack into two continuous vertical rails. Rails are gated to
+  `md:` and up, where there is margin to show them. A `GridBand` is the full-bleed variant: it
+  hatches the margins (`bg-hatch`, gated to `md:` too) and lets the column read as a clean window
+  cut through them. Colors come from `--grid-line` (rails and rules) and `--grid-hatch` (stripes).
+- **Sections:** each is a `SectionShell` — a `GridBand` carrying a mono `// kicker` (accent-blue)
+  over a Geist heading, then a `GridColumn` of content. No code-bar framing, no closing brackets.
+  Sections butt directly against each other with **no gap**: vertical rhythm lives inside each
+  section's own padding so the rails stay unbroken, and each band's top border is the divider.
 - **Cards:** soft-cornered (`rounded-xl`), 1px `--border`, `bg-surface/40`, hover → `bg-surface`
   (tonal, not shadow). Cards top out at ~14px radius; pills are `rounded-full`. **No** nested cards.
 - **Radius:** `--radius: 0.625rem` (10px); shadcn `sm/md/lg/xl` scale derives from it.

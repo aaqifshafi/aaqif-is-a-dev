@@ -3,6 +3,7 @@
 import { Fragment, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { AvailabilityBadge } from "@/components/availability-badge";
+import { GridColumn } from "@/components/grid-frame";
 import { ScrambleLink } from "@/components/scramble-link";
 import { footer, profile } from "@/lib/portfolio-data";
 
@@ -60,9 +61,9 @@ function Signature({ className }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="w-full border-t border-border/60 max-w-2xl mx-auto">
+    <footer className="w-full border-t border-t-grid-line">
       {/* Inspired by */}
-      <div className="mx-auto w-full max-w-2xl overflow-hidden px-5 pt-8 pb-2 sm:px-6">
+      <GridColumn className="overflow-hidden pt-8 pb-2">
         <div className="flex flex-wrap items-baseline gap-x-0 gap-y-0.5 font-technical text-[11px] leading-relaxed text-outline/50">
           <span className="mr-1">Inspired by</span>
           {inspirations.map((item, i) => (
@@ -88,15 +89,15 @@ export function SiteFooter() {
             open sourced on GitHub
           </ScrambleLink>
         </div>
-      </div>
+      </GridColumn>
 
       {/* Signature */}
-      <div className="mx-auto flex w-full max-w-2xl justify-center px-5 pb-6 pt-6 sm:px-6">
+      <GridColumn className="flex justify-center pb-6 pt-6">
         <Signature className="h-14 w-auto cursor-default text-outline/60 transition-colors duration-500 hover:text-outline" />
-      </div>
+      </GridColumn>
 
       {/* Bottom bar */}
-      <div className="mx-auto flex w-full max-w-2xl flex-col items-start justify-between gap-4 border-t border-border/40 px-5 py-5 font-technical text-[11px] text-outline sm:flex-row sm:items-center sm:px-6">
+      <GridColumn className="flex flex-col items-start justify-between gap-4 border-t border-t-border/40 py-5 font-technical text-[11px] text-outline sm:flex-row sm:items-center">
         <div className="flex flex-wrap gap-4">
           {footer.links.map((link) => (
             <ScrambleLink key={link.label} href={link.href} external className={underline}>
@@ -112,7 +113,7 @@ export function SiteFooter() {
           <span className="text-outline-variant">·</span>
           <span>{footer.version}</span>
         </div>
-      </div>
+      </GridColumn>
     </footer>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CommandMenu } from "@/components/command-menu";
+import { GridColumn } from "@/components/grid-frame";
 import { Reveal } from "@/components/reveal";
 import { ScrambleLink } from "@/components/scramble-link";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -14,7 +15,7 @@ const underline =
 export function TopNav() {
   return (
     <nav className="sticky top-0 z-[60] w-full border-b border-border/60 bg-background/70 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-5 py-3 sm:px-6">
+      <GridColumn className="flex items-center justify-between py-3">
         <Reveal immediate delay={bootDelay.nav} className="flex items-center gap-5">
           <Link
             href="/"
@@ -58,7 +59,7 @@ export function TopNav() {
             </TooltipContent>
           </Tooltip>
         </Reveal>
-      </div>
+      </GridColumn>
     </nav>
   );
 }

@@ -3,6 +3,7 @@ import { IconChevronLeft } from "@tabler/icons-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { GridColumn } from "@/components/grid-frame";
 import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { TopNav } from "@/components/top-nav";
@@ -44,8 +45,8 @@ export default async function WorkDetailPage({
   return (
     <>
       <TopNav />
-      <main className="mx-auto w-full max-w-2xl grow px-5 sm:px-6">
-        <div className="flex flex-col gap-12 py-14 sm:py-20">
+      <main className="flex w-full grow flex-col">
+        <GridColumn className="flex grow flex-col gap-12 py-14 sm:py-20">
 
           <Reveal immediate>
             <Link
@@ -84,7 +85,7 @@ export default async function WorkDetailPage({
 
           <WorkDetailStack tags={project.tags} />
 
-        </div>
+        </GridColumn>
       </main>
       <SiteFooter />
     </>
