@@ -38,6 +38,10 @@ yarn-error.log*
 .claude/
 .react-doctor/
 
+# local agent tooling state (impeccable: config + live session journals)
+.impeccable/
+PRODUCT.md
+
 # vercel
 .vercel
 
