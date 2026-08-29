@@ -11,9 +11,9 @@ Clean, calm, **single-column** personal portfolio. Modern and tasteful first; pe
 second. The few signatures that carry the "builds software" identity: a **Geist Pixel**
 wordmark/name, small **mono `//` kickers** above section headings, a **single electric-blue
 accent**, an emerald **live-status** color, a ⌘K command menu, and a GitHub-style contribution
-graph. A **blueprint grid frames** the page: two hairline rails at the content column's edges,
-full-bleed rules between sections, and diagonal hatching in the margins beside each section
-header. This is structure, deliberately — it is what gives a narrow single column an
+graph. A **blueprint grid frames** the page: two dashed hairline rails at the content column's
+edges, solid full-bleed rules between sections, and diagonal hatching in the margins beside
+each section header. This is structure, deliberately — it is what gives a narrow single column an
 architectural read instead of leaving it floating in space. Density stays **low-to-moderate**
 — the frame does the structural work so whitespace can stay generous inside it.
 
@@ -59,14 +59,28 @@ Loaded via the official `geist` npm package (self-hosted, zero layout shift). On
   `ProfileHeader` (monogram + name, status line, bio, contact row) → stacked sections
   (`gap-16 sm:gap-20`) → `SiteFooter`.
 - **Grid frame:** every block renders a `GridColumn` (`src/components/grid-frame.tsx`) — a centered
-  `max-w-2xl` box whose side borders stack into two continuous vertical rails. Rails are gated to
-  `md:` and up, where there is margin to show them. A `GridBand` is the full-bleed variant: it
-  hatches the margins (`bg-hatch`, gated to `md:` too) and lets the column read as a clean window
-  cut through them. Colors come from `--grid-line` (rails and rules) and `--grid-hatch` (stripes).
+  `max-w-2xl` box — and `GridRails` draws the two **dashed** vertical rails that frame them.
+  The rails are one absolutely-positioned element spanning `<body>`, not a border per block: a
+  dashed border restarts its phase on every element, which would stutter at each section seam.
+  Being a body child (not `fixed`) keeps their width on the content width, clear of the scrollbar.
+  Rails are gated to `md:` and up, where there is margin to show them, and sit at `z-[45]` — above
+  the sticky nav (`z-40`) so the frame wraps the whole page, below dialogs and tooltips (`z-50`).
+  A `GridBand` is the full-bleed variant: it hatches the margins (`bg-hatch`, gated to `md:` too)
+  and lets the column read as a clean window cut through them. Its `border-y` rules stay **solid**,
+  so horizontal lines read as structure against the dashed vertical guides. Where a rule crosses a
+  rail, a 4px **node square** marks the junction at `z-[46]`, one layer above the rails so a passing
+  dash never lightens it, and nudged half a pixel off its box corner so it centres on the *lines*
+  rather than the corner (the rules are borders outside the padding box; the rails sit inside the
+  column edge). Weight hierarchy, strongest to faintest: `--grid-node` (junctions) →
+  `--grid-line` (rails and rules) → `--grid-hatch` (stripes). `bg-rail` and `bg-hatch` are utilities in `globals.css`, whose dash and stripe
+  geometry is tuned through the four named knobs in the **GRID FRAME — TUNE HERE** block there
+  (`--rail-dash`, `--rail-gap`, `--hatch-line`, `--hatch-gap`). `GridDivider` is a band with
+  no content (`h-6`): where a seam carries no heading of its own — above the footer — it renders as
+  a **double divider**, rule + hatched strip + rule, instead of a lone hairline.
 - **Sections:** each is a `SectionShell` — a `GridBand` carrying a mono `// kicker` (accent-blue)
   over a Geist heading, then a `GridColumn` of content. No code-bar framing, no closing brackets.
   Sections butt directly against each other with **no gap**: vertical rhythm lives inside each
-  section's own padding so the rails stay unbroken, and each band's top border is the divider.
+  section's own padding, and each band's top border is the divider.
 - **Cards:** soft-cornered (`rounded-xl`), 1px `--border`, `bg-surface/40`, hover → `bg-surface`
   (tonal, not shadow). Cards top out at ~14px radius; pills are `rounded-full`. **No** nested cards.
 - **Radius:** `--radius: 0.625rem` (10px); shadcn `sm/md/lg/xl` scale derives from it.
@@ -76,7 +90,12 @@ Loaded via the official `geist` npm package (self-hosted, zero layout shift). On
 - **Live clock** (`live-clock.tsx`): real local time for `profile.timezone`, mono + `tabular-nums`
   so it never jitters; hydration-safe, ticks each second. In the header status line.
 - **Availability** (`availability-badge.tsx`): `● Available for work` with a soft pulsing emerald
-  dot (`motion-safe:animate-ping`). Header + footer.
+  dot (`motion-safe:animate-ping`). **Header only** — it is the highest-value signal for the hiring
+  audience, so it sits in the first viewport and is not diluted by a second copy in the footer.
+- **Visit counter** (`visitor-count.tsx`): `◉ N views` in the footer bottom bar, against the public
+  CountAPI instance. One increment per browser session, and it renders *nothing* on failure — a
+  third-party ornament must leave no trace when it breaks. It owns its own separator (side set by
+  the `separator` prop) because the parent cannot know whether it will render.
 - **Magnetic** (`magnetic.tsx`): spring-smoothed pointer pull on contact chips; **fine-pointer only**
   and disabled under reduced motion.
 - **⌘K command menu** and **contribution heatmap** carry over from before.

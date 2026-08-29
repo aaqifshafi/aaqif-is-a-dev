@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
+import { GridRails } from "@/components/grid-frame";
 import { MotionProvider } from "@/components/motion-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -47,7 +48,8 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh flex-col" suppressHydrationWarning>
+      <body className="relative flex min-h-dvh flex-col" suppressHydrationWarning>
+        <GridRails />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

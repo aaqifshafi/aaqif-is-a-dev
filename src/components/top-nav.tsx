@@ -12,7 +12,7 @@ const underline =
 /** Slim sticky header: pixel wordmark + in-page nav, ⌘K and theme toggle. */
 export function TopNav() {
   return (
-    <nav className="sticky top-0 z-[60] w-full border-b border-border/60 bg-background/70 backdrop-blur-md">
+    <nav className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/70 backdrop-blur-md">
       <GridColumn className="flex items-center justify-between py-3">
         <Reveal immediate delay={bootDelay.nav} className="flex items-center gap-5">
           <Link

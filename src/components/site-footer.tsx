@@ -2,10 +2,10 @@
 
 import { Fragment, useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { AvailabilityBadge } from "@/components/availability-badge";
-import { GridColumn } from "@/components/grid-frame";
+import { GridColumn, GridDivider } from "@/components/grid-frame";
 import { ScrambleLink } from "@/components/scramble-link";
-import { footer, profile } from "@/lib/portfolio-data";
+import { VisitorCount } from "@/components/visitor-count";
+import { footer } from "@/lib/portfolio-data";
 
 const inspirations = [
   { label: "ui.shadcn.com", href: "https://ui.shadcn.com" },
@@ -61,7 +61,9 @@ function Signature({ className }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="w-full border-t border-t-grid-line">
+    <footer className="w-full">
+      <GridDivider />
+
       {/* Inspired by */}
       <GridColumn className="overflow-hidden pt-8 pb-2">
         <div className="flex flex-wrap items-baseline gap-x-0 gap-y-0.5 font-technical text-[11px] leading-relaxed text-outline/50">
@@ -109,8 +111,7 @@ export function SiteFooter() {
           </ScrambleLink>
         </div>
         <div className="flex items-center gap-3">
-          <AvailabilityBadge available={profile.available} className="text-[11px]" />
-          <span className="text-outline-variant">·</span>
+          <VisitorCount separator="trailing" />
           <span>{footer.version}</span>
         </div>
       </GridColumn>

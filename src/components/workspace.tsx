@@ -1,4 +1,3 @@
-import { GridColumn } from "@/components/grid-frame";
 import { Certifications } from "@/components/sections/certifications";
 import { Contact } from "@/components/sections/contact";
 import { ContributionsHeatmap } from "@/components/sections/contributions-heatmap";
@@ -13,8 +12,8 @@ export type WorkspaceProps = {
 
 /**
  * Stacked content sections. They butt directly against each other with no gap:
- * the vertical rhythm lives inside each section's own padding, so the grid
- * rails stay unbroken and each header band's top border becomes the divider.
+ * the vertical rhythm lives inside each section's own padding, so each header
+ * band's top border becomes the divider between one section and the last.
  */
 export function Workspace({ className }: WorkspaceProps) {
   return (
@@ -25,8 +24,6 @@ export function Workspace({ className }: WorkspaceProps) {
       <Certifications />
       <Reading />
       <Contact />
-      {/* absorbs leftover height so the rails always reach the footer */}
-      <GridColumn className="grow" />
     </div>
   );
 }

@@ -10,11 +10,13 @@ export type LiveClockProps = {
 };
 
 function formatTime(timeZone: string): string {
-  return new Intl.DateTimeFormat("en-GB", {
+  // 2-digit, not numeric: 12-hour `numeric` drops the leading zero, so the
+  // string changes width twice a day and the line shifts under it.
+  return new Intl.DateTimeFormat("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-    hour12: false,
+    hour12: true,
     timeZone,
   }).format(new Date());
 }

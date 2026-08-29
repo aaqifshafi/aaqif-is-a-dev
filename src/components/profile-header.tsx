@@ -1,3 +1,4 @@
+import { IconClock, IconMapPin } from "@tabler/icons-react";
 import { AvailabilityBadge } from "@/components/availability-badge";
 import { AvatarImage } from "@/components/avatar-image";
 import { CopyEmail } from "@/components/copy-email";
@@ -45,13 +46,16 @@ export function ProfileHeader() {
             available={profile.available}
             className="text-[11px]"
           />
-          <span className="text-outline-variant">·</span>
-          <span className="text-on-surface-variant">{profile.location}</span>
-          <span className="text-outline-variant">·</span>
-          <LiveClock
-            timeZone={profile.timezone}
-            className="text-on-surface-variant"
-          />
+          <span className="text-outline">·</span>
+          <span className="inline-flex items-center gap-1.5 text-on-surface-variant">
+            <IconMapPin className="size-3 shrink-0" aria-hidden />
+            {profile.location}
+          </span>
+          <span className="text-outline">·</span>
+          <span className="inline-flex items-center gap-1.5 text-on-surface-variant">
+            <IconClock className="size-3 shrink-0" aria-hidden />
+            <LiveClock timeZone={profile.timezone} />
+          </span>
         </Reveal>
 
         <Reveal immediate delay={bootDelay.heroTagline}>
