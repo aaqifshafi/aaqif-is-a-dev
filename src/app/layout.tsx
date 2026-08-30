@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
+import { CloudflareAnalytics } from "@/components/cloudflare-analytics";
 import { GridRails } from "@/components/grid-frame";
 import { MotionProvider } from "@/components/motion-provider";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -60,6 +61,7 @@ export default function RootLayout({
             <TooltipProvider>{children}</TooltipProvider>
           </MotionProvider>
         </ThemeProvider>
+        <CloudflareAnalytics />
       </body>
     </html>
   );
