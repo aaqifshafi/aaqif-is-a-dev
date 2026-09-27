@@ -30,12 +30,13 @@ function countToLevel(count: number): number {
   return 4
 }
 
-export const getCachedContributions = unstable_cache(
-  async (username: string): Promise<Activity[] | null> => {
-    const token = process.env.GITHUB_TOKEN
+// Failures throw inside the cached fn so unstable_cache never stores them;
+// the exported wrapper turns them into null for the UI.
+const fetchContributionsCached = unstable_cache(
+  async (username: string): Promise<Activity[]> => {
+    const token = process.env.GITHUB_TOKEN?.trim()
     if (!token) {
-      console.error("[contributions] GITHUB_TOKEN env var is not set")
-      return null
+      throw new Error("GITHUB_TOKEN env var is not set")
     }
 
     const from = new Date()
@@ -56,50 +57,56 @@ export const getCachedContributions = unstable_cache(
       }
     }`
 
-    try {
-      const res = await fetch("https://api.github.com/graphql", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables: {
+          username,
+          from: from.toISOString(),
+          to: new Date().toISOString(),
         },
-        body: JSON.stringify({
-          query,
-          variables: {
-            username,
-            from: from.toISOString(),
-            to: new Date().toISOString(),
-          },
-        }),
-      })
+      }),
+    })
 
-      if (!res.ok) {
-        console.error(`[contributions] GitHub API responded with ${res.status}`)
-        return null
-      }
-
-      const json = (await res.json()) as GitHubGraphQLResponse
-
-      if (json.errors?.length) {
-        console.error("[contributions] GitHub GraphQL errors:", json.errors)
-        return null
-      }
-
-      const weeks =
-        json.data.user.contributionsCollection.contributionCalendar.weeks
-
-      return weeks.flatMap((week) =>
-        week.contributionDays.map((day) => ({
-          date: day.date,
-          count: day.contributionCount,
-          level: countToLevel(day.contributionCount),
-        }))
-      )
-    } catch (err) {
-      console.error("[contributions] fetch failed:", err)
-      return null
+    if (!res.ok) {
+      throw new Error(`GitHub API responded with ${res.status}`)
     }
+
+    const json = (await res.json()) as GitHubGraphQLResponse
+
+    if (json.errors?.length) {
+      throw new Error(
+        `GitHub GraphQL errors: ${json.errors.map((e) => e.message).join("; ")}`
+      )
+    }
+
+    const weeks =
+      json.data.user.contributionsCollection.contributionCalendar.weeks
+
+    return weeks.flatMap((week) =>
+      week.contributionDays.map((day) => ({
+        date: day.date,
+        count: day.contributionCount,
+        level: countToLevel(day.contributionCount),
+      }))
+    )
   },
   ["github-contributions"],
   { revalidate: 86400 }
 )
+
+export async function getCachedContributions(
+  username: string
+): Promise<Activity[] | null> {
+  try {
+    return await fetchContributionsCached(username)
+  } catch (err) {
+    console.error("[contributions]", err instanceof Error ? err.message : err)
+    return null
+  }
+}
