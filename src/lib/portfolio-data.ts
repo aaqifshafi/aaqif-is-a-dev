@@ -19,6 +19,7 @@ export const profile = {
   timezone: "Asia/Kolkata",
   available: true,
   email: "aaqifshafi@gmail.com",
+  bookingUrl: "https://cal.com/aaqifshafi/30min",
   tagline:
     "I ship products that work — APIs, event-driven pipelines, modern frontends, and everything in between. Building full-stack from Kashmir.",
 } as const;
@@ -42,6 +43,7 @@ export const socialLinks: SocialLink[] = [
     href: "https://linkedin.com/in/aaqifshafi",
   },
   { index: "03", label: "Twitter / X", href: "https://x.com/aaqifshafi" },
+  { index: "04", label: "Book a call", href: profile.bookingUrl },
 ];
 
 export const readingList: Book[] = [];

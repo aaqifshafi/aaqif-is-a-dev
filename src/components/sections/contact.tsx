@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { IconCheck, IconLoader2, IconSend } from "@tabler/icons-react";
+import { IconCalendar, IconCheck, IconLoader2, IconSend } from "@tabler/icons-react";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,6 +11,7 @@ import {
   sendContactMessage,
   type ContactState,
 } from "@/app/actions/contact";
+import { profile } from "@/lib/portfolio-data";
 
 const initial: ContactState = { status: "idle" };
 
@@ -106,7 +107,16 @@ export function Contact() {
             </p>
           )}
 
-          <div className="mt-6 flex justify-end">
+          <div className="mt-6 flex flex-col-reverse items-center gap-4 sm:flex-row sm:justify-between">
+            <a
+              href={profile.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-technical text-xs text-outline transition-colors hover:text-primary"
+            >
+              <IconCalendar className="size-3.5" />
+              or book a 15-min call
+            </a>
             <button
               type="submit"
               disabled={isPending}

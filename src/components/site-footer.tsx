@@ -99,8 +99,8 @@ export function SiteFooter() {
       </GridColumn>
 
       {/* Bottom bar */}
-      <GridColumn className="flex flex-col items-start justify-between gap-4 border-t border-t-border/40 py-5 font-technical text-[11px] text-outline sm:flex-row sm:items-center">
-        <div className="flex flex-wrap gap-4">
+      <GridColumn className="flex flex-col items-center justify-between gap-4 border-t border-t-border/40 py-5 font-technical text-[11px] text-outline sm:flex-row sm:items-center">
+        <div className="flex flex-wrap justify-center gap-4">
           {footer.links.map((link) => (
             <ScrambleLink key={link.label} href={link.href} external className={underline}>
               {link.label}
