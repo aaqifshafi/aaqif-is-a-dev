@@ -5,13 +5,13 @@ import { IconCalendar, IconCheck, IconLoader2, IconSend } from "@tabler/icons-re
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { BookCallButton } from "@/components/book-call-button";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/sections/section-shell";
 import {
   sendContactMessage,
   type ContactState,
 } from "@/app/actions/contact";
-import { profile } from "@/lib/portfolio-data";
 
 const initial: ContactState = { status: "idle" };
 
@@ -108,15 +108,10 @@ export function Contact() {
           )}
 
           <div className="mt-6 flex flex-col-reverse items-center gap-4 sm:flex-row sm:justify-between">
-            <a
-              href={profile.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-technical text-xs text-outline transition-colors hover:text-primary"
-            >
+            <BookCallButton className="inline-flex cursor-pointer items-center gap-2 font-technical text-xs text-outline transition-colors hover:text-primary">
               <IconCalendar className="size-3.5" />
-              or book a 15-min call
-            </a>
+              or book a quick call
+            </BookCallButton>
             <button
               type="submit"
               disabled={isPending}

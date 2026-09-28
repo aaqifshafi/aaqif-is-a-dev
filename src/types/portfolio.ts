@@ -11,6 +11,8 @@ export type SocialLink = {
   index: string;
   label: string;
   href: string;
+  /** Open the Cal.com booking modal in-page instead of following `href`. */
+  booking?: boolean;
 };
 
 export type ManifestItem = {

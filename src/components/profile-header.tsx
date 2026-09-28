@@ -70,7 +70,12 @@ export function ProfileHeader() {
           className="flex flex-wrap items-center gap-2"
         >
           {socialLinks.map((link) => (
-            <SocialChip key={link.label} label={link.label} href={link.href} />
+            <SocialChip
+              key={link.label}
+              label={link.label}
+              href={link.href}
+              booking={link.booking}
+            />
           ))}
           <CopyEmail email={profile.email} />
         </Reveal>
