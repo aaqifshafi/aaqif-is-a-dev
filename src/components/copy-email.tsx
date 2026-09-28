@@ -1,7 +1,7 @@
 "use client";
 
-import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { useState } from "react";
+import { MorphIcon } from "@/components/morph-icon";
 import { cn } from "@/lib/utils";
 
 export type CopyEmailProps = {
@@ -33,20 +33,13 @@ export function CopyEmail({ email, className }: CopyEmailProps) {
         className,
       )}
     >
-      <span className="relative inline-flex size-3 items-center justify-center">
-        <IconCopy
-          className={cn(
-            "absolute size-3 transition-[transform,opacity] duration-200 ease-snappy",
-            copied ? "scale-0 opacity-0" : "scale-100 opacity-100",
-          )}
-        />
-        <IconCheck
-          className={cn(
-            "absolute size-3 text-emerald-500 transition-[transform,opacity] duration-200 ease-snappy",
-            copied ? "scale-100 opacity-100" : "scale-0 opacity-0",
-          )}
-        />
-      </span>
+      <MorphIcon
+        name={copied ? "check" : "copy"}
+        className={cn(
+          "size-3 transition-colors duration-200 ease-snappy",
+          copied && "text-emerald-500",
+        )}
+      />
       {copied ? "Copied" : "Email"}
     </button>
   );

@@ -1,17 +1,19 @@
 "use client";
 
 import { useActionState } from "react";
-import { IconCalendar, IconCheck, IconLoader2, IconSend } from "@tabler/icons-react";
+import { IconCalendar, IconCheck } from "@tabler/icons-react";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { BookCallButton } from "@/components/book-call-button";
 import { Reveal } from "@/components/reveal";
+import { MorphIcon } from "@/components/morph-icon";
 import { SectionShell } from "@/components/sections/section-shell";
 import {
   sendContactMessage,
   type ContactState,
 } from "@/app/actions/contact";
+import { cn } from "@/lib/utils";
 
 const initial: ContactState = { status: "idle" };
 
@@ -117,17 +119,11 @@ export function Contact() {
               disabled={isPending}
               className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 font-technical text-xs text-on-surface-variant transition-[color,border-color,opacity] hover:border-outline hover:text-primary disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {isPending ? (
-                <>
-                  <IconLoader2 className="size-3.5 animate-spin" />
-                  Sending…
-                </>
-              ) : (
-                <>
-                  <IconSend className="size-3.5" />
-                  Send Message
-                </>
-              )}
+              <MorphIcon
+                name={isPending ? "loader" : "send"}
+                className={cn("size-3.5", isPending && "animate-spin")}
+              />
+              {isPending ? "Sending…" : "Send Message"}
             </button>
           </div>
         </form>

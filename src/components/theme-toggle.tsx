@@ -1,8 +1,8 @@
 "use client";
 
-import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
+import { MorphIcon } from "@/components/morph-icon";
 import { useMounted } from "@/hooks/use-mounted";
 import { click003Sound } from "@/lib/click-003";
 import { playSound } from "@/lib/sound-engine";
@@ -43,24 +43,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
         className,
       )}
     >
-      <span className="relative inline-flex size-4.5 items-center justify-center">
-        <IconMoon
-          className={cn(
-            "absolute size-4.5 transition-[transform,opacity] duration-300 ease-snappy",
-            isDark
-              ? "rotate-0 scale-100 opacity-100"
-              : "-rotate-90 scale-0 opacity-0",
-          )}
-        />
-        <IconSun
-          className={cn(
-            "absolute size-4.5 transition-[transform,opacity] duration-300 ease-snappy",
-            isDark
-              ? "rotate-90 scale-0 opacity-0"
-              : "rotate-0 scale-100 opacity-100",
-          )}
-        />
-      </span>
+      <MorphIcon name={isDark ? "moon" : "sun"} className="size-4.5" />
     </button>
   );
 }
