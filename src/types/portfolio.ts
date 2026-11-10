@@ -26,7 +26,32 @@ export type Book = {
   author: string;
 };
 
-export type ExperienceIcon = "boxes" | "terminal" | "gistr" | "wallet" | "designfolio";
+export type ExperienceIcon =
+  | "boxes"
+  | "terminal"
+  | "gistr"
+  | "wallet"
+  | "designfolio"
+  | "tapaway"
+  | "peopleofbengaluru";
+
+/** A silent, looping product clip. Shown in place of the screenshot when present. */
+export type WorkVideoSource = {
+  /** Path under `/public`, e.g. "/work/people-of-bengaluru.mp4". */
+  src: string;
+  /** MIME type with codecs, so the browser skips files it can't decode. */
+  type: string;
+};
+
+export type WorkVideo = {
+  /** Best codec first (AV1, then H.264 as the universal fallback). */
+  sources: WorkVideoSource[];
+  /** First-frame still shown before playback (and under reduced motion). */
+  poster: string;
+  /** Intrinsic pixel size — reserves the clip's aspect ratio before it loads. */
+  width: number;
+  height: number;
+};
 
 /** A grouped block of work within a case study (hybrid: one line of context + bullets). */
 export type WorkSection = {
@@ -51,12 +76,16 @@ export type WorkProject = {
   icon: ExperienceIcon;
   /** Marks the current role (renders the glowing status dot). */
   active?: boolean;
+  /** Keeps the entry (and its `/work/[slug]` page) but leaves it off the homepage Work list. */
+  hidden?: boolean;
   /** Short summary shown on the homepage card. */
   blurb: string;
   /** Live product URL (rendered as an external link on the detail page). */
   liveUrl?: string;
   /** Label for the live link, e.g. "designfolio.me". Defaults to the URL host. */
   liveLabel?: string;
+  /** Product clip. Takes priority over `image`; falls back to it when absent. */
+  video?: WorkVideo;
   /**
    * Screenshot path under `/public` (same image for light + dark), e.g.
    * "/work/gistr.png". Omit when there's no screenshot — the card/hero collapses.

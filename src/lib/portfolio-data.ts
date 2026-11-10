@@ -63,8 +63,16 @@ export const work: WorkProject[] = [
     type: "Full-time",
     period: "05.2026 — Now",
     icon: "designfolio",
+    video: {
+      sources: [
+        { src: "/work/designfolio.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },
+        { src: "/work/designfolio.mp4", type: "video/mp4" },
+      ],
+      poster: "/work/designfolio-poster.jpg",
+      width: 1280,
+      height: 800,
+    },
     active: true,
-    image: "/work/designfolio.png",
     liveUrl: "https://designfolio.me",
     liveLabel: "designfolio.me",
     blurb:
@@ -105,7 +113,165 @@ export const work: WorkProject[] = [
         ],
       },
     ],
-    tags: ["Next.js", "NestJS", "TypeScript", "Tiptap", "PostgreSQL", "AI"],
+    tags: [
+      "Next.js",
+      "Express.js",
+      "JavaScript",
+      "MongoDB",
+      "Vertex AI",
+      "Razorpay",
+      "Tiptap",
+      "Vercel",
+      "AWS",
+    ],
+  },
+  {
+    slug: "people-of-bengaluru",
+    company: "People of Bengaluru",
+    role: "Full-Stack Product Engineer",
+    type: "Freelance",
+    period: "10.2026 — Now",
+    icon: "peopleofbengaluru",
+    video: {
+      sources: [
+        { src: "/work/people-of-bengaluru.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },
+        { src: "/work/people-of-bengaluru.mp4", type: "video/mp4" },
+      ],
+      poster: "/work/people-of-bengaluru-poster.jpg",
+      width: 1280,
+      height: 800,
+    },
+    liveUrl: "https://peopleofbengaluru.com",
+    liveLabel: "peopleofbengaluru.com",
+    blurb:
+      "A stylized 3D Bengaluru you walk through to discover the city's designers and builders. Built the game world, live multiplayer on Cloudflare Durable Objects, in-city chat and connections, invites, applications with Dodo Payments, and the admin.",
+    product:
+      "People of Bengaluru is a living game world — a stylized, game-quality 3D Bengaluru where designers and builders exist as characters. Instead of scrolling a feed, you walk the city, approach people, open their profiles, see what they're building, and connect. The city is the interface; the people are the network.",
+    sections: [
+      {
+        title: "The 3D City",
+        context:
+          "Built the world in React Three Fiber — a recognisable but stylized Bengaluru that runs smoothly on phones as well as desktops.",
+        bullets: [
+          "Districts (Koramangala, HSR) with travel between them via portals",
+          "Characters with floating nameplates, online dots, and status bubbles",
+          "Day and night that follows Bengaluru's real clock",
+          "Touch controls, full screen, and an iPhone Home Screen web app mode",
+          "Performance tuning across portrait, landscape, and iPad",
+        ],
+      },
+      {
+        title: "Live City & Realtime",
+        context:
+          "Every member you see is a real person, live. Designed the realtime layer to keep positions, presence, and chat in sync across everyone in the city.",
+        bullets: [
+          "Cloudflare Workers + Durable Objects for real-time member positions",
+          "One live tab per member with a clear 'live in another tab' state",
+          "Idle members drop off the live map after ten minutes",
+          "Load and abuse testing with simulated bot clients",
+        ],
+      },
+      {
+        title: "Connect, Chat & Missions",
+        context:
+          "The social layer — turning discovering someone into actually talking to them, without leaving the city.",
+        bullets: [
+          "Connect flow: intent, optional note, mutual match, and introduction",
+          "Chat inside the city, with batched unread-message emails",
+          "Search for people, profile panels, and unmatching with a cooldown",
+          "Day Zero missions to guide new members through the world",
+        ],
+      },
+      {
+        title: "Membership, Invites & Admin",
+        context:
+          "The whole path from stranger to member — applying, reviewing, inviting, and signing in.",
+        bullets: [
+          "One-question application and admin review, with Dodo Payments",
+          "Founder invites and member invite codes, tracked in the HUD",
+          "Sign in by emailed six-digit code; transactional email via Resend",
+          "Supabase auth and Postgres with separate staging and production",
+          "Admin on its own subdomain, SEO, analytics, and CI checks on every PR",
+        ],
+      },
+    ],
+    tags: [
+      "Next.js",
+      "React Three Fiber",
+      "TypeScript",
+      "Cloudflare Workers",
+      "Supabase",
+      "Dodo Payments",
+    ],
+  },
+  {
+    slug: "tapaway",
+    company: "Tapaway",
+    role: "iOS & Full-Stack Engineer",
+    type: "Freelance",
+    period: "08.2026 — 11.2026",
+    icon: "tapaway",
+    video: {
+      sources: [
+        { src: "/work/tapaway.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },
+        { src: "/work/tapaway.mp4", type: "video/mp4" },
+      ],
+      poster: "/work/tapaway-poster.jpg",
+      width: 1280,
+      height: 800,
+    },
+    liveUrl: "https://apps.apple.com/us/app/tapaway-digital-detox/id6801114477",
+    liveLabel: "App Store",
+    blurb:
+      "iOS app that locks your chosen apps behind a physical NFC tag — tap to lock, tap again to unlock. Built the SwiftUI app, Screen Time and Core NFC integration, schedules and auto re-lock, Supabase sync, and the web store. Live on the App Store.",
+    product:
+      "Tapaway is a digital-detox app for iPhone. You pick the apps that distract you, and a physical NFC tag becomes the only way to lock and unlock them — the tag has to leave your hand to get your apps back. It's friction, not security: a deliberate pause between you and the scroll.",
+    sections: [
+      {
+        title: "Lock Engine & Screen Time",
+        context:
+          "Built the core of the app — a single engine that owns lock state, so shields, sessions, and haptics never disagree.",
+        bullets: [
+          "FamilyControls + ManagedSettings app shielding with the system app picker",
+          "Custom Shield Configuration extension for the locked-app screen",
+          "Device Activity monitor extension for auto re-lock and schedules",
+          "Sessions that survive relaunch, persisted with SwiftData in an App Group",
+        ],
+      },
+      {
+        title: "NFC Tags",
+        context:
+          "The physical tag is required in both directions, so tag handling had to be fast and reliable.",
+        bullets: [
+          "Core NFC scanning and provisioning of password-protected NTAG213 tags",
+          "Keychain-stored secrets with constant-time verification",
+          "Tag registration, sharing a tag across accounts, and Face ID to end a session",
+        ],
+      },
+      {
+        title: "App Experience",
+        context:
+          "Shipped every screen in the app to a dark-only design system with shared motion and haptic timing.",
+        bullets: [
+          "Onboarding, sign-in, Home (Ready / Locked / Set up), Modes, and Settings",
+          "Schedules with time-first cards and day strips",
+          "Activity screen with animated, inspectable usage statistics",
+          "Core Haptics and synthesized sound feedback",
+        ],
+      },
+      {
+        title: "Backend, Store & Release",
+        context:
+          "Everything around the app — accounts, sync, selling tags, and getting through App Review.",
+        bullets: [
+          "Supabase auth and sync engine for tags, sessions, and profiles",
+          "Next.js web store for NFC tags with Dodo Payments checkout and an admin",
+          "Privacy manifests, account deletion, and App Store submission",
+          "Swift Testing suite with simulator mocks for NFC and Screen Time",
+        ],
+      },
+    ],
+    tags: ["Swift", "SwiftUI", "SwiftData", "Core NFC", "Screen Time", "Supabase"],
   },
   {
     slug: "gistr",
@@ -114,7 +280,15 @@ export const work: WorkProject[] = [
     type: "Full-time",
     period: "01.2025 — 04.2026",
     icon: "gistr",
-    image: "/work/gistr.png",
+    video: {
+      sources: [
+        { src: "/work/gistr.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },
+        { src: "/work/gistr.mp4", type: "video/mp4" },
+      ],
+      poster: "/work/gistr-poster.jpg",
+      width: 1280,
+      height: 800,
+    },
     liveUrl: "https://gistr.so",
     liveLabel: "gistr.so",
     blurb:
@@ -200,6 +374,7 @@ export const work: WorkProject[] = [
     type: "Intern",
     period: "09.2024 — 01.2025",
     icon: "wallet",
+    hidden: true,
     blurb:
       "B2B payment consolidation API. Built full-stack features for the multi-biller platform and contributed to Ared — an AI carbon footprint calculator with a carbon credit marketplace.",
     product:

@@ -10,7 +10,7 @@ import { TopNav } from "@/components/top-nav";
 import { WorkDetailHeader } from "@/components/work-detail-header";
 import { WorkDetailSections } from "@/components/work-detail-sections";
 import { WorkDetailStack } from "@/components/work-detail-stack";
-import { WorkImage } from "@/components/work-image";
+import { WorkMedia } from "@/components/work-media";
 import { work } from "@/lib/portfolio-data";
 
 type Params = { slug: string };
@@ -60,11 +60,10 @@ export default async function WorkDetailPage({
 
           <WorkDetailHeader project={project} />
 
-          {project.image && (
+          {(project.video || project.image) && (
             <Reveal>
-              <WorkImage
-                src={project.image}
-                alt={`${project.company} product screenshot`}
+              <WorkMedia
+                project={project}
                 priority
                 sizes="(max-width: 672px) 100vw, 640px"
                 className="rounded-xl border border-border"
