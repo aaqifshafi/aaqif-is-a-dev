@@ -78,6 +78,17 @@
   --ease-fluid: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
+  /* terminal caret: hard on/off like a real terminal (step-end, not a fade).
+     Finite by design: blinking past 5s needs a pause control (WCAG 2.2.2),
+     so the settled caret blinks 4× and then rests solid. */
+  --animate-caret-blink: caret-blink 1.06s step-end infinite;
+  --animate-caret-settle: caret-blink 1.06s step-end 4;
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
   /* radius scale (shadcn convention) — soft, modern rounding */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

@@ -24,7 +24,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { type ComponentType, useCallback, useEffect, useState, useSyncExternalStore } from "react";
 
-import { techIcons } from "@/components/icons/tech-icons";
 import { workIcons } from "@/components/icons/work-icons";
 import {
   Command,
@@ -35,13 +34,13 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
+  CommandShortcut,
 } from "@/components/ui/command";
 import {
   certifications,
   footer,
   profile,
   socialLinks,
-  techStack,
   work,
 } from "@/lib/portfolio-data";
 import { setThemeWithTransition } from "@/lib/theme";
@@ -82,19 +81,24 @@ function openExternal(href: string) {
   window.open(href, "_blank", "noopener,noreferrer");
 }
 
+/**
+ * Trailing "opens in a new tab" arrow. Wrapped in CommandShortcut so it takes
+ * the item's right edge: CommandItem renders its own hidden `ml-auto` check
+ * icon, and two auto margins would split the space and strand the arrow mid-row.
+ */
 function NewTabHint() {
   return (
-    <>
-      <IconArrowUpRight aria-hidden className="ml-auto size-3.5 text-outline" />
+    <CommandShortcut className="flex items-center tracking-normal">
+      <IconArrowUpRight aria-hidden className="size-3.5 text-outline" />
       <span className="sr-only">, opens in a new tab</span>
-    </>
+    </CommandShortcut>
   );
 }
 
 export type CommandMenuProps = { className?: string };
 
 /**
- * ⌘K / Ctrl+K palette: every section, project, case study, tool, certificate,
+ * ⌘K / Ctrl+K palette: every section, project, case study, certificate,
  * link and action on the site, searchable by name and keywords. It opens and
  * closes instantly — it's a keyboard tool used repeatedly, so it doesn't animate.
  */
@@ -217,13 +221,13 @@ export function CommandMenu({ className }: CommandMenuProps) {
         open={open}
         onOpenChange={setOpen}
         title="Search"
-        description="Search sections, projects, case studies, tools, certificates and links. Use the arrow keys to move and Enter to select."
+        description="Search sections, projects, case studies, certificates and links. Use the arrow keys to move and Enter to select."
         className="data-open:animate-none data-closed:animate-none"
       >
         <Command>
-          <CommandInput placeholder="Search projects, tools, sections…" aria-label="Search" />
+          <CommandInput placeholder="Search projects, sections, links…" aria-label="Search" />
           <CommandList>
-            <CommandEmpty>Nothing matches that. Try a project, a tool, or a section name.</CommandEmpty>
+            <CommandEmpty>Nothing matches that. Try a project, a section, or a certificate.</CommandEmpty>
 
             <CommandGroup heading="Sections">
               <CommandItem value="Home" keywords={["top", "start", "about"]} onSelect={() => goToSection("top")}>
@@ -296,7 +300,9 @@ export function CommandMenu({ className }: CommandMenuProps) {
                   <IconCopy aria-hidden className={iconClass} />
                 )}
                 {copied ? "Email copied" : "Copy email"}
-                <span className="ml-auto font-technical text-[11px] text-outline">{profile.email}</span>
+                <CommandShortcut className="truncate font-technical text-[11px] tracking-normal text-outline">
+                  {profile.email}
+                </CommandShortcut>
               </CommandItem>
               <CommandItem value="Book a call" keywords={["schedule", "meeting", "cal", "chat"]} onSelect={bookCall}>
                 <IconCalendarEvent aria-hidden className={iconClass} />
@@ -316,7 +322,9 @@ export function CommandMenu({ className }: CommandMenuProps) {
                   <IconMoon aria-hidden className={iconClass} />
                 )}
                 {`Switch to ${nextTheme} theme`}
-                <kbd aria-hidden className="ml-auto font-technical text-[10px] text-outline">T</kbd>
+                <CommandShortcut aria-hidden className="font-technical text-[10px] text-outline">
+                  <kbd>T</kbd>
+                </CommandShortcut>
               </CommandItem>
             </CommandGroup>
 
@@ -349,25 +357,6 @@ export function CommandMenu({ className }: CommandMenuProps) {
                 llms.txt
                 <NewTabHint />
               </CommandItem>
-            </CommandGroup>
-
-            <CommandSeparator />
-            <CommandGroup heading="Tech stack">
-              {techStack.map((tech) => {
-                const Icon = techIcons[tech.icon];
-                return (
-                  <CommandItem
-                    key={tech.name}
-                    value={tech.name}
-                    keywords={["tech", "tool", "stack"]}
-                    onSelect={() => (tech.url ? goExternal(tech.url) : goToSection("stack"))}
-                  >
-                    <Icon className="size-4 shrink-0" />
-                    {tech.name}
-                    {tech.url && <NewTabHint />}
-                  </CommandItem>
-                );
-              })}
             </CommandGroup>
 
             <CommandSeparator />

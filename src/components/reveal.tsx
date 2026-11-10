@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 import { fadeRise, revealTransition } from "@/lib/motion";
 
 export type RevealProps = {
@@ -24,9 +25,13 @@ export type RevealProps = {
  */
 export function Reveal({ children, className, delay = 0, immediate = false }: RevealProps) {
   const reduce = useReducedMotion();
+  // The server can't know the motion preference, so it always renders the
+  // motion version. Switching to the plain version on the *first* client render
+  // is a hydration mismatch that leaves the server's `opacity:0` behind (content
+  // stays invisible for reduced-motion users). Switch only after hydration.
+  const mounted = useMounted();
 
-  // null = server / not yet known; only skip motion when definitively true
-  if (reduce === true) {
+  if (mounted && reduce === true) {
     return <div className={className}>{children}</div>;
   }
 
