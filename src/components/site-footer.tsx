@@ -82,14 +82,6 @@ export function SiteFooter() {
               )}
             </Fragment>
           ))}
-          <span className="mx-2 select-none text-outline-variant">·</span>
-          <ScrambleLink
-            href={footer.sourceUrl}
-            external
-            className={`text-outline ${underline}`}
-          >
-            open sourced on GitHub
-          </ScrambleLink>
         </div>
       </GridColumn>
 

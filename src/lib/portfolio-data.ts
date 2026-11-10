@@ -491,8 +491,6 @@ export const certifications: Certification[] = [
 ];
 
 export const footer = {
-  tagline: "Open source.",
-  sourceUrl: "https://github.com/aaqifshafi/aaqif.is-a.dev",
   links: [
     { label: "GITHUB", href: "https://github.com/aaqifshafi" },
     { label: "LINKEDIN", href: "https://linkedin.com/in/aaqifshafi" },

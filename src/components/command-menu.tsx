@@ -7,7 +7,6 @@ import {
   IconBrandGithub,
   IconCalendarEvent,
   IconCheck,
-  IconCode,
   IconCopy,
   IconCpu,
   IconFileText,
@@ -38,7 +37,6 @@ import {
 } from "@/components/ui/command";
 import {
   certifications,
-  footer,
   profile,
   socialLinks,
   work,
@@ -347,11 +345,6 @@ export function CommandMenu({ className }: CommandMenuProps) {
                     <NewTabHint />
                   </CommandItem>
                 ))}
-              <CommandItem value="Source code" keywords={["github", "repo", "open source"]} onSelect={() => goExternal(footer.sourceUrl)}>
-                <IconCode aria-hidden className={iconClass} />
-                Source code
-                <NewTabHint />
-              </CommandItem>
               <CommandItem value="llms.txt" keywords={["ai", "llm", "summary"]} onSelect={() => goExternal("/llms.txt")}>
                 <IconFileText aria-hidden className={iconClass} />
                 llms.txt
