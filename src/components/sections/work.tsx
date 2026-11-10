@@ -6,7 +6,7 @@ import { workIcons } from "@/components/icons/work-icons";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/sections/section-shell";
 import { TagChip } from "@/components/tag-chip";
-import { WorkImage } from "@/components/work-image";
+import { WorkMedia } from "@/components/work-media";
 import { work } from "@/lib/portfolio-data";
 import type { WorkProject } from "@/types/portfolio";
 
@@ -16,16 +16,11 @@ function WorkCard({ project }: { project: WorkProject }) {
   return (
     <Reveal>
       <Link
-        href={`/work/${project.slug}`}
+        href={project.liveUrl ?? `/work/${project.slug}`}
+        {...(project.liveUrl && { target: "_blank", rel: "noopener noreferrer" })}
         className="group block overflow-hidden rounded-xl border border-border bg-surface/40 transition-colors hover:border-outline"
       >
-        {project.image && (
-          <WorkImage
-            src={project.image}
-            alt={`${project.company} product screenshot`}
-            className="border-b border-border"
-          />
-        )}
+        <WorkMedia project={project} className="border-b border-border" />
 
         <div className="flex flex-col gap-3 p-5 sm:p-6">
           <div className="flex items-start justify-between gap-4">
@@ -65,9 +60,11 @@ export function Work() {
   return (
     <SectionShell id="work" kicker="experience" title="Work">
       <div className="flex flex-col gap-4">
-        {work.map((project) => (
-          <WorkCard key={project.slug} project={project} />
-        ))}
+        {work
+          .filter((project) => !project.hidden)
+          .map((project) => (
+            <WorkCard key={project.slug} project={project} />
+          ))}
       </div>
     </SectionShell>
   );

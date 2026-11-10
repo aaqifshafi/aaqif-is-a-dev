@@ -1,7 +1,16 @@
-import { IconBoxMultiple, IconTerminal2, IconWallet } from "@tabler/icons-react";
+import {
+  IconBoxMultiple,
+  IconTerminal2,
+  IconWallet,
+} from "@tabler/icons-react";
 import type { ComponentType } from "react";
 
-import { DesignfolioIcon, GistrIcon } from "@/components/icons/custom-icons";
+import {
+  DesignfolioIcon,
+  GistrIcon,
+  PeopleOfBengaluruIcon,
+  TapawayIcon,
+} from "@/components/icons/custom-icons";
 import type { ExperienceIcon } from "@/types/portfolio";
 
 type IconProps = { className?: string };
@@ -13,4 +22,6 @@ export const workIcons: Record<ExperienceIcon, ComponentType<IconProps>> = {
   gistr: GistrIcon,
   wallet: IconWallet,
   designfolio: DesignfolioIcon,
+  tapaway: TapawayIcon,
+  peopleofbengaluru: PeopleOfBengaluruIcon,
 };

@@ -1,6 +1,6 @@
 # Aaqif Shafi — Full-Stack Product Engineer
 
-> Personal portfolio of Aaqif Shafi, a full-stack product engineer based in Kashmir, India. Building end-to-end products with NestJS, Next.js, and everything in between.
+> Personal portfolio of Aaqif Shafi, a full-stack product engineer based in Kashmir, India. Building end-to-end products across web, realtime, and iOS: Next.js, Node.js, Swift, and everything in between.
 
 This file follows the llms.txt convention (https://llmstxt.org) to give language models a concise, structured summary of the site.
 
@@ -16,24 +16,28 @@ This file follows the llms.txt convention (https://llmstxt.org) to give language
 
 ## Experience
 
-- Designfolio — Full-Stack Product Engineer (May 2026 – Present)
-  Portfolio builder for designers and developers. Built the full jobs board (scraping, Kanban, AI match scoring), mock interview, resume tailor, cover letter generation, Tiptap case study editor, and dynamic templates. Next.js, NestJS, TypeScript, Tiptap, PostgreSQL.
+- Designfolio — Full-Stack Product Engineer (May 2026 – Present) — https://designfolio.me
+  Portfolio builder for designers and developers. Built the full jobs board (scraping, Kanban, AI match scoring), mock interview, resume tailor, cover letter generation, Tiptap case study editor, and dynamic templates. Next.js, Express.js, JavaScript, MongoDB, Vertex AI, Razorpay, Vercel, AWS.
 
-- Gistr Technologies — Fullstack Product Engineer (Jan 2025 – Apr 2026)
+- People of Bengaluru — Full-Stack Product Engineer (Oct 2026 – Present) — https://peopleofbengaluru.com
+  A stylized 3D Bengaluru you walk through to discover the city's designers and builders. Built the game world in React Three Fiber, live multiplayer on Cloudflare Workers + Durable Objects, in-city chat and connections, invites, applications with Dodo Payments, sign-in, and the admin. Next.js, TypeScript, Supabase, Resend.
+
+- Tapaway — iOS & Full-Stack Engineer (Aug 2026 – Nov 2026) — https://apps.apple.com/us/app/tapaway-digital-detox/id6801114477
+  iOS digital-detox app that locks chosen apps behind a physical NFC tag — tap to lock, tap again to unlock. Built the SwiftUI app, Screen Time (FamilyControls, ManagedSettings, DeviceActivity) and Core NFC integration, schedules and auto re-lock, Supabase sync, the Next.js web store with Dodo Payments, and the App Store release. Swift, SwiftUI, SwiftData, Supabase.
+
+- Gistr Technologies — Fullstack Product Engineer (Jan 2025 – Apr 2026) — https://gistr.so
   AI knowledge workspace. File ingestion pipelines (PDF, EPUB, DOCX, PPTX, podcasts, web), credit-based billing with Dodo Payments, BullMQ job queues, PostHog analytics, core AI features. NestJS, Next.js, BullMQ, MongoDB.
 
-- Payoll Payments LLC — Software Engineering Intern (Sep 2024 – Jan 2025)
-  B2B payments consolidation API and Ared carbon footprint calculator with carbon credit marketplace. Express, Vite, PostgreSQL.
-
-Each role has a detailed case study at https://aaqif.is-a.dev/work/<slug> (designfolio, gistr, payoll).
+Each project has a detailed case study at https://aaqif.is-a.dev/work/<slug> (designfolio, people-of-bengaluru, tapaway, gistr).
 
 ## Tech Stack
 
-Languages: TypeScript, JavaScript
-Frontend: React, Next.js, Tailwind CSS, Framer Motion
-Backend: Node.js, NestJS, Express.js, BullMQ
+Languages: TypeScript, JavaScript, Swift
+Frontend: React, Next.js, Tailwind CSS, Motion, React Three Fiber
+Mobile: SwiftUI, SwiftData, Core NFC, Screen Time APIs
+Backend: Node.js, NestJS, Express.js, BullMQ, Supabase
 Databases: PostgreSQL, MongoDB, Redis
-Cloud: AWS, AWS Lambda, Vercel
+Cloud: AWS, Vercel, Cloudflare Workers
 Tools: Git, GitHub, Vite, Bun, VS Code
 
 ## Certifications
@@ -47,7 +51,7 @@ Tools: Git, GitHub, Vite, Bun, VS Code
 
 ## Sections
 
-- [Work](https://aaqif.is-a.dev/#work): Roles and companies, each linking to a detailed case study.
+- [Work](https://aaqif.is-a.dev/#work): Products and roles; each card opens the live product.
 - [Tech Stack](https://aaqif.is-a.dev/#stack): Languages, frameworks, and tools.
 - [Contributions](https://aaqif.is-a.dev/#contributions): GitHub contribution activity.
 - [Certifications](https://aaqif.is-a.dev/#certifications): Credentials and certificates.
