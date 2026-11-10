@@ -481,9 +481,9 @@ export const certifications: Certification[] = [
   {
     index: "07",
     title: "Fundamentals of Digital Marketing",
-    issuer: "Google",
+    issuer: "Google Digital Garage",
     year: "2021",
-    href: "https://drive.google.com",
+    href: "https://drive.google.com/file/d/1U6spOmhYWtZVDSOHw9nYe4XEsrQ3g3CM/view?usp=drive_link",
   },
 ];
 

@@ -48,7 +48,7 @@ Tools: Git, GitHub, Vite, Bun, VS Code
 - Responsive Web Design — freeCodeCamp (2023)
 - The Complete 2023 Web Development Bootcamp — Udemy (2023)
 - HTML, CSS, and Javascript for Web Developers — Johns Hopkins University (2022)
-- Fundamentals of Digital Marketing — Google (2021)
+- Fundamentals of Digital Marketing — Google Digital Garage (2021)
 
 ## Sections
 
