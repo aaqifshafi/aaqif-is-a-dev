@@ -3,6 +3,7 @@
 import { Fragment, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { GridColumn, GridDivider } from "@/components/grid-frame";
+import { LastDeploy } from "@/components/last-deploy";
 import { ScrambleLink } from "@/components/scramble-link";
 import { VisitorCount } from "@/components/visitor-count";
 import { footer } from "@/lib/portfolio-data";
@@ -83,13 +84,7 @@ export function SiteFooter() {
             </Fragment>
           ))}
           <span className="mx-2 select-none text-outline-variant">·</span>
-          <ScrambleLink
-            href={footer.sourceUrl}
-            external
-            className={`text-outline ${underline}`}
-          >
-            open sourced on GitHub
-          </ScrambleLink>
+          <LastDeploy />
         </div>
       </GridColumn>
 

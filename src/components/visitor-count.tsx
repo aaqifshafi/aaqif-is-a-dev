@@ -6,10 +6,8 @@ import { motion } from "motion/react";
 import { duration, easeSnappy } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-/** Public CountAPI instance: https://github.com/syntaxerror019/countapi */
-const API_BASE = "https://countapi.mileshilliard.com/api/v1";
-/** Counters on the host are public and keyed only by name, so namespace it. */
-const COUNTER_KEY = "aaqif-is-a-dev-views";
+/** Our own route, backed by Upstash Redis (see src/lib/views.ts). */
+const VIEWS_ENDPOINT = "/api/views";
 const SESSION_FLAG = "aaqif-view-counted";
 
 export type VisitorCountProps = {
@@ -19,10 +17,10 @@ export type VisitorCountProps = {
 };
 
 /**
- * Visit count for the footer bar. Increments once per browser session, then
- * reads. Renders nothing while loading or on failure — a third-party ornament
- * should leave no trace when it breaks, and it owns its own separator because
- * the parent cannot know whether it will render.
+ * Visit count for the footer bar. Counts once per browser session (the server
+ * also dedupes per visitor), then only reads. Renders nothing while loading or
+ * on failure, and owns its own separator because the parent cannot know
+ * whether it will render.
  */
 export function VisitorCount({
   className,
@@ -44,7 +42,7 @@ export function VisitorCount({
       // Storage can throw when blocked; recounting is the harmless failure.
     }
 
-    fetch(`${API_BASE}/${counted ? "get" : "hit"}/${COUNTER_KEY}`)
+    fetch(VIEWS_ENDPOINT, { method: counted ? "GET" : "POST", cache: "no-store" })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .then((data: { value?: number }) => {
         if (cancelled || typeof data.value !== "number") return;
