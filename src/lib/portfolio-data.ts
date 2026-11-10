@@ -211,7 +211,6 @@ export const work: WorkProject[] = [
     type: "Freelance",
     period: "08.2026 — Now",
     icon: "tapaway",
-    active: true,
     video: {
       sources: [
         { src: "/work/tapaway.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },
