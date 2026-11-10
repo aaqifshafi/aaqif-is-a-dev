@@ -165,7 +165,8 @@ export const work: WorkProject[] = [
         context:
           "Every member you see is a real person, live. Designed the realtime layer to keep positions, presence, and chat in sync across everyone in the city.",
         bullets: [
-          "Cloudflare Workers + Durable Objects for real-time member positions",
+          "Cloudflare Workers + Durable Objects (one Room per district shard, a City for live counts) with hibernating WebSockets",
+          "Cloudflare Rate Limiting on new connections and the room APIs",
           "One live tab per member with a clear 'live in another tab' state",
           "Idle members drop off the live map after ten minutes",
           "Load and abuse testing with simulated bot clients",
@@ -200,6 +201,8 @@ export const work: WorkProject[] = [
       "React Three Fiber",
       "TypeScript",
       "Cloudflare Workers",
+      "Durable Objects",
+      "Cloudflare Rate Limiting",
       "Supabase",
       "Dodo Payments",
     ],
