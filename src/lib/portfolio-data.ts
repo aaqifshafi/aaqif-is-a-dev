@@ -441,7 +441,7 @@ export const certifications: Certification[] = [
     title: "Next.js SEO Fundamentals",
     issuer: "Vercel / Next.js",
     year: "2025",
-    href: "https://nextjs.org/learn/certificate?course=seo&user=96351&certId=seo-96351-1756570830061",
+    href: "/certificates/nextjs-seo-fundamentals.png",
   },
   {
     index: "02",
