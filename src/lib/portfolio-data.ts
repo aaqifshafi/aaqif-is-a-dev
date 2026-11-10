@@ -455,6 +455,7 @@ export const certifications: Certification[] = [
     title: "Python with Data Science & Machine Learning",
     issuer: "NIELIT",
     year: "2023",
+    href: "https://drive.google.com/file/d/1bOFZB5rkoPfTDTKLq293EGGKmNRY_LeB/view?usp=drive_link",
   },
   {
     index: "04",
