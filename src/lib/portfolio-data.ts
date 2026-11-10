@@ -209,8 +209,9 @@ export const work: WorkProject[] = [
     company: "Tapaway",
     role: "iOS & Full-Stack Engineer",
     type: "Freelance",
-    period: "08.2026 — 11.2026",
+    period: "08.2026 — Now",
     icon: "tapaway",
+    active: true,
     video: {
       sources: [
         { src: "/work/tapaway.av1.mp4", type: 'video/mp4; codecs="av01.0.08M.10"' },

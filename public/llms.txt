@@ -22,7 +22,7 @@ This file follows the llms.txt convention (https://llmstxt.org) to give language
 - People of Bengaluru — Full-Stack Product Engineer (Oct 2026 – Present) — https://peopleofbengaluru.com
   A stylized 3D Bengaluru you walk through to discover the city's designers and builders. Built the game world in React Three Fiber, live multiplayer on Cloudflare Workers + Durable Objects, in-city chat and connections, invites, applications with Dodo Payments, sign-in, and the admin. Next.js, TypeScript, Supabase, Resend.
 
-- Tapaway — iOS & Full-Stack Engineer (Aug 2026 – Nov 2026) — https://apps.apple.com/us/app/tapaway-digital-detox/id6801114477
+- Tapaway — iOS & Full-Stack Engineer (Aug 2026 – Present) — https://apps.apple.com/us/app/tapaway-digital-detox/id6801114477
   iOS digital-detox app that locks chosen apps behind a physical NFC tag — tap to lock, tap again to unlock. Built the SwiftUI app, Screen Time (FamilyControls, ManagedSettings, DeviceActivity) and Core NFC integration, schedules and auto re-lock, Supabase sync, the Next.js web store with Dodo Payments, and the App Store release. Swift, SwiftUI, SwiftData, Supabase.
 
 - Gistr Technologies — Fullstack Product Engineer (Jan 2025 – Apr 2026) — https://gistr.so
