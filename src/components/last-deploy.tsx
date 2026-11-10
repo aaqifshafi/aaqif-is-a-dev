@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 const DEPLOYED_AT = process.env.NEXT_PUBLIC_DEPLOYED_AT ?? "";
 const COMMIT_SHA = process.env.NEXT_PUBLIC_COMMIT_SHA ?? "";
 
-const relative = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "long" });
+const relative = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "short" });
 
-/** "just now", "6 minutes ago", "3 hours ago", "2 days ago", … */
+/** "just now", "6 min. ago", "3 hr. ago", "2 days ago", … */
 function since(iso: string, now: number): string {
   const seconds = Math.round((new Date(iso).getTime() - now) / 1000);
   const abs = Math.abs(seconds);
@@ -24,7 +24,7 @@ function since(iso: string, now: number): string {
 export type LastDeployProps = { className?: string };
 
 /**
- * "last deployed 6 minutes ago", for the footer's bottom bar. Hovering the time
+ * "last deployed 6 min. ago", for the footer's bottom bar. Hovering the time
  * shows the exact date and commit. Relative time depends on the visitor's
  * clock, so it renders only after hydration (no server/client mismatch) and
  * ticks once a minute.
