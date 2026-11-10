@@ -444,6 +444,7 @@ export const certifications: Certification[] = [
     title: "Next.js SEO Fundamentals",
     issuer: "Vercel / Next.js",
     year: "2025",
+    href: "https://drive.google.com/file/d/1QnKTYRylaU_hvi4cxWBSsIY_oVMZbPxP/view?usp=sharing",
   },
   {
     index: "02",
