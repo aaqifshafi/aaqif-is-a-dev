@@ -25,9 +25,13 @@ export async function GET() {
   }
 }
 
-/** Count this visit (deduped per visitor) and return the total. */
+/**
+ * Count this visit (deduped per visitor) and return the total. The dev server
+ * shares the production database, so local visits only read — they never count.
+ */
 export async function POST(request: NextRequest) {
   if (!viewsConfigured()) return unavailable();
+  if (process.env.NODE_ENV === "development") return GET();
   try {
     return NextResponse.json({ value: await recordView(clientIp(request)) }, { headers });
   } catch {
