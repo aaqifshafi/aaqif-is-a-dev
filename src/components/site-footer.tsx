@@ -3,7 +3,6 @@
 import { Fragment, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { GridColumn, GridDivider } from "@/components/grid-frame";
-import { LastDeploy } from "@/components/last-deploy";
 import { ScrambleLink } from "@/components/scramble-link";
 import { VisitorCount } from "@/components/visitor-count";
 import { footer } from "@/lib/portfolio-data";
@@ -103,9 +102,7 @@ export function SiteFooter() {
             llms.txt
           </ScrambleLink>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <LastDeploy />
-          <span className="select-none text-outline-variant" aria-hidden>·</span>
+        <div className="flex items-center gap-3">
           <VisitorCount separator="trailing" />
           <span>{footer.version}</span>
         </div>
