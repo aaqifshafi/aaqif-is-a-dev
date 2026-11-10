@@ -83,8 +83,6 @@ export function SiteFooter() {
               )}
             </Fragment>
           ))}
-          <span className="mx-2 select-none text-outline-variant">·</span>
-          <LastDeploy />
         </div>
       </GridColumn>
 
@@ -105,7 +103,9 @@ export function SiteFooter() {
             llms.txt
           </ScrambleLink>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <LastDeploy />
+          <span className="select-none text-outline-variant" aria-hidden>·</span>
           <VisitorCount separator="trailing" />
           <span>{footer.version}</span>
         </div>

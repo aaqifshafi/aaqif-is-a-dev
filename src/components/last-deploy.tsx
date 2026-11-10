@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 const DEPLOYED_AT = process.env.NEXT_PUBLIC_DEPLOYED_AT ?? "";
 const COMMIT_SHA = process.env.NEXT_PUBLIC_COMMIT_SHA ?? "";
 
-const relative = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "short" });
+const relative = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "long" });
 
-/** "just now", "12 min. ago", "3 hr. ago", "2 days ago", … */
+/** "just now", "6 minutes ago", "3 hours ago", "2 days ago", … */
 function since(iso: string, now: number): string {
   const seconds = Math.round((new Date(iso).getTime() - now) / 1000);
   const abs = Math.abs(seconds);
@@ -24,9 +24,10 @@ function since(iso: string, now: number): string {
 export type LastDeployProps = { className?: string };
 
 /**
- * "last deploy 3 hr. ago · a1b2c3d": when this build shipped and from which
- * commit. Relative time depends on the visitor's clock, so it renders only
- * after hydration (no server/client mismatch) and ticks once a minute.
+ * "last deployed 6 minutes ago", for the footer's bottom bar. Hovering the time
+ * shows the exact date and commit. Relative time depends on the visitor's
+ * clock, so it renders only after hydration (no server/client mismatch) and
+ * ticks once a minute.
  */
 export function LastDeploy({ className }: LastDeployProps) {
   const mounted = useMounted();
@@ -43,24 +44,17 @@ export function LastDeploy({ className }: LastDeployProps) {
     dateStyle: "medium",
     timeStyle: "short",
   });
+  const tooltip = COMMIT_SHA ? `${absolute} · ${COMMIT_SHA}` : absolute;
 
   return (
     <span className={cn("inline-flex items-center gap-1.5", className)}>
       <span aria-hidden className="size-1.5 rounded-full bg-emerald-500/80" />
       <span>
-        last deploy{" "}
-        <time dateTime={DEPLOYED_AT} title={absolute} className="text-outline">
+        last deployed{" "}
+        <time dateTime={DEPLOYED_AT} title={tooltip}>
           {mounted ? since(DEPLOYED_AT, now) : "recently"}
         </time>
       </span>
-      {COMMIT_SHA && (
-        <>
-          <span aria-hidden className="select-none text-outline-variant">·</span>
-          <code className="text-outline" aria-label={`commit ${COMMIT_SHA}`}>
-            {COMMIT_SHA}
-          </code>
-        </>
-      )}
     </span>
   );
 }
