@@ -44,7 +44,6 @@ Tools: Git, GitHub, Vite, Bun, VS Code
 
 - Next.js SEO Fundamentals — Vercel (2025)
 - Full Stack Open Source Cohort 1 — 100xDevs, Harkirat Singh (2023)
-- Python with Data Science & Machine Learning — NIELIT (2023)
 - Responsive Web Design — freeCodeCamp (2023)
 - The Complete 2023 Web Development Bootcamp — Udemy (2023)
 - HTML, CSS, and Javascript for Web Developers — Johns Hopkins University (2022)
