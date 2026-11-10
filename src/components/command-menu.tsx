@@ -227,7 +227,7 @@ export function CommandMenu({ className }: CommandMenuProps) {
         <Command>
           <CommandInput placeholder="Search projects, sections, links…" aria-label="Search" />
           <CommandList>
-            <CommandEmpty>Nothing matches that. Try a project, a tool, or a section name.</CommandEmpty>
+            <CommandEmpty>Nothing matches that. Try a project, a section, or a certificate.</CommandEmpty>
 
             <CommandGroup heading="Sections">
               <CommandItem value="Home" keywords={["top", "start", "about"]} onSelect={() => goToSection("top")}>
