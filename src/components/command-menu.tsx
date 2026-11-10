@@ -24,7 +24,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { type ComponentType, useCallback, useEffect, useState, useSyncExternalStore } from "react";
 
-import { techIcons } from "@/components/icons/tech-icons";
 import { workIcons } from "@/components/icons/work-icons";
 import {
   Command,
@@ -42,7 +41,6 @@ import {
   footer,
   profile,
   socialLinks,
-  techStack,
   work,
 } from "@/lib/portfolio-data";
 import { setThemeWithTransition } from "@/lib/theme";
@@ -100,7 +98,7 @@ function NewTabHint() {
 export type CommandMenuProps = { className?: string };
 
 /**
- * ⌘K / Ctrl+K palette: every section, project, case study, tool, certificate,
+ * ⌘K / Ctrl+K palette: every section, project, case study, certificate,
  * link and action on the site, searchable by name and keywords. It opens and
  * closes instantly — it's a keyboard tool used repeatedly, so it doesn't animate.
  */
@@ -223,11 +221,11 @@ export function CommandMenu({ className }: CommandMenuProps) {
         open={open}
         onOpenChange={setOpen}
         title="Search"
-        description="Search sections, projects, case studies, tools, certificates and links. Use the arrow keys to move and Enter to select."
+        description="Search sections, projects, case studies, certificates and links. Use the arrow keys to move and Enter to select."
         className="data-open:animate-none data-closed:animate-none"
       >
         <Command>
-          <CommandInput placeholder="Search projects, tools, sections…" aria-label="Search" />
+          <CommandInput placeholder="Search projects, sections, links…" aria-label="Search" />
           <CommandList>
             <CommandEmpty>Nothing matches that. Try a project, a tool, or a section name.</CommandEmpty>
 
@@ -359,25 +357,6 @@ export function CommandMenu({ className }: CommandMenuProps) {
                 llms.txt
                 <NewTabHint />
               </CommandItem>
-            </CommandGroup>
-
-            <CommandSeparator />
-            <CommandGroup heading="Tech stack">
-              {techStack.map((tech) => {
-                const Icon = techIcons[tech.icon];
-                return (
-                  <CommandItem
-                    key={tech.name}
-                    value={tech.name}
-                    keywords={["tech", "tool", "stack"]}
-                    onSelect={() => (tech.url ? goExternal(tech.url) : goToSection("stack"))}
-                  >
-                    <Icon className="size-4 shrink-0" />
-                    {tech.name}
-                    {tech.url && <NewTabHint />}
-                  </CommandItem>
-                );
-              })}
             </CommandGroup>
 
             <CommandSeparator />
