@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { IconCalendar, IconCheck } from "@tabler/icons-react";
 
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,7 @@ import {
   sendContactMessage,
   type ContactState,
 } from "@/app/actions/contact";
+import { play, typeSound } from "@/lib/sound";
 import { cn } from "@/lib/utils";
 
 const initial: ContactState = { status: "idle" };
@@ -25,6 +26,22 @@ const inputClass =
 
 export function Contact() {
   const [state, action, isPending] = useActionState(sendContactMessage, initial);
+
+  // Sound the outcome once it lands.
+  useEffect(() => {
+    if (state.status === "success") play("success");
+    else if (state.status === "error") play("error");
+  }, [state]);
+
+  // A failed native validation fires `invalid` once per bad field; sound it
+  // once per submit attempt.
+  const lastInvalid = useRef(0);
+  const onInvalid = () => {
+    const now = performance.now();
+    if (now - lastInvalid.current < 300) return;
+    lastInvalid.current = now;
+    play("error");
+  };
 
   if (state.status === "success") {
     return (
@@ -51,7 +68,12 @@ export function Contact() {
   return (
     <SectionShell id="contact" kicker="reach out" title="Get in Touch">
       <Reveal>
-        <form action={action} className="rounded-xl border border-border bg-surface/40 p-5 sm:p-6">
+        <form
+          action={action}
+          onSubmit={() => play("send")}
+          onInvalidCapture={onInvalid}
+          className="rounded-xl border border-border bg-surface/40 p-5 sm:p-6"
+        >
           <p className="mb-6 max-w-[52ch] font-technical text-sm leading-relaxed text-on-surface-variant">
             Open to new opportunities, collaborations, and interesting conversations.
           </p>
@@ -68,6 +90,7 @@ export function Contact() {
                   placeholder="Your name"
                   required
                   autoComplete="name"
+                  {...typeSound}
                   className={inputClass}
                 />
               </div>
@@ -83,6 +106,7 @@ export function Contact() {
                   placeholder="you@example.com"
                   required
                   autoComplete="email"
+                  {...typeSound}
                   className={inputClass}
                 />
               </div>
@@ -98,6 +122,7 @@ export function Contact() {
                 placeholder="What's on your mind?"
                 required
                 rows={5}
+                {...typeSound}
                 className={inputClass}
               />
             </div>

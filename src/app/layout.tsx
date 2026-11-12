@@ -5,6 +5,7 @@ import { GeistSans } from "geist/font/sans";
 import { CloudflareAnalytics } from "@/components/cloudflare-analytics";
 import { GridRails } from "@/components/grid-frame";
 import { MotionProvider } from "@/components/motion-provider";
+import { SoundProvider } from "@/components/sound-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -51,6 +52,7 @@ export default function RootLayout({
     >
       <body className="relative flex min-h-dvh flex-col" suppressHydrationWarning>
         <GridRails />
+        <SoundProvider />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

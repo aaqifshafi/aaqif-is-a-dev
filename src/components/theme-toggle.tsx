@@ -4,8 +4,7 @@ import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
 import { MorphIcon } from "@/components/morph-icon";
 import { useMounted } from "@/hooks/use-mounted";
-import { click003Sound } from "@/lib/click-003";
-import { playSound } from "@/lib/sound-engine";
+import { play } from "@/lib/sound";
 import { setThemeWithTransition } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +17,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
 
   const toggle = useCallback(() => {
     const next = isDark ? "light" : "dark";
-    void playSound(click003Sound.dataUri, { volume: 0.4 });
+    // Lights on rises, lights off falls.
+    play(next === "light" ? "toggle-on" : "toggle-off");
     setThemeWithTransition(setTheme, next);
   }, [isDark, setTheme]);
 

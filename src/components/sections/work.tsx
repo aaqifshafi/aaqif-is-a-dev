@@ -8,6 +8,7 @@ import { TagChip } from "@/components/tag-chip";
 import { WorkMedia } from "@/components/work-media";
 import { WorkLogoTile } from "@/components/work-logo-tile";
 import { work } from "@/lib/portfolio-data";
+import { hoverSound, sound } from "@/lib/sound";
 import type { WorkProject } from "@/types/portfolio";
 
 /**
@@ -35,6 +36,8 @@ function WorkCard({ project }: { project: WorkProject }) {
                     <Link
                       href={href}
                       {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+                      {...sound("click")}
+                      {...hoverSound}
                       className="outline-none after:absolute after:inset-0 after:content-['']"
                     >
                       {project.company}

@@ -2,12 +2,13 @@
 
 import { CommandMenu } from "@/components/command-menu";
 import { Reveal } from "@/components/reveal";
+import { SoundToggle } from "@/components/sound-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { bootDelay } from "@/lib/motion";
 
 /**
- * The ⌘K and theme controls, with their reveal and tooltips in one client module.
+ * The ⌘K, sound and theme controls, with their reveal and tooltips in one client module.
  *
  * This must stay a single client component. When a Server Component passes the
  * Radix `Tooltip` elements as children *through* the separate client `Reveal`
@@ -28,6 +29,17 @@ export function NavActions() {
         <TooltipContent side="bottom" sideOffset={8}>
           <span className="font-technical text-[10px]">Search</span>
           <kbd data-slot="kbd" className="ml-1 font-technical text-[10px] opacity-70">⌘K</kbd>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <span>
+            <SoundToggle />
+          </span>
+        </TooltipTrigger>
+        <TooltipContent side="bottom" sideOffset={8}>
+          <span className="font-technical text-[10px]">Toggle sound</span>
+          <kbd data-slot="kbd" className="ml-1 font-technical text-[10px] opacity-70">M</kbd>
         </TooltipContent>
       </Tooltip>
       <Tooltip>

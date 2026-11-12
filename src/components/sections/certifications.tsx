@@ -4,6 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/sections/section-shell";
 import { certifications } from "@/lib/portfolio-data";
 import type { Certification } from "@/types/portfolio";
+import { hoverSound, sound } from "@/lib/sound";
 
 type CertRowProps = { cert: Certification };
 
@@ -46,6 +47,8 @@ export function Certifications() {
                     href={cert.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    {...sound("tap")}
+                    {...hoverSound}
                     className="group block transition-colors hover:bg-surface/60 focus-visible:bg-surface/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
                   >
                     <CertRow cert={cert} />

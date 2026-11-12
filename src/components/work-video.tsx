@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import type { WorkVideo as WorkVideoData } from "@/types/portfolio";
+import { play } from "@/lib/sound";
 
 export type WorkVideoProps = {
   video: WorkVideoData;
@@ -68,6 +69,7 @@ export function WorkVideo({ video, label, priority, className }: WorkVideoProps)
     // alone wouldn't re-run the effect, and the click would appear to do nothing.
     if (playing) el.pause();
     else el.play().catch(() => {});
+    play(playing ? "toggle-off" : "toggle-on");
     setUserWantsPlay(!playing);
   };
 
