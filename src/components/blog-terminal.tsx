@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { useMounted } from "@/hooks/use-mounted";
 import { duration, easeSnappy } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { play } from "@/lib/sound";
 
 const FIRST_COMMAND = "cat status.md";
 const SECOND_COMMAND = "cd ~";
@@ -178,6 +179,7 @@ export function BlogTerminal({ className }: BlogTerminalProps) {
               ref={linkRef}
               href="/"
               aria-label="Back to home"
+              onClick={() => play("page-exit")}
               tabIndex={finished ? 0 : -1}
               className="group/cd inline-flex items-center gap-1 rounded-sm text-on-surface outline-none transition-[color,transform] duration-150 ease-snappy hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:scale-[0.97]"
             >

@@ -4,6 +4,7 @@ import { NavActions } from "@/components/nav-actions";
 import { Reveal } from "@/components/reveal";
 import { ScrambleLink } from "@/components/scramble-link";
 import { bootDelay } from "@/lib/motion";
+import { hoverSound, sound } from "@/lib/sound";
 import { navLinks } from "@/lib/portfolio-data";
 
 const underline =
@@ -17,6 +18,8 @@ export function TopNav() {
         <Reveal immediate delay={bootDelay.nav} className="flex items-center gap-5">
           <Link
             href="/"
+            {...sound("tap")}
+            {...hoverSound}
             className="font-pixel text-base text-primary transition-opacity hover:opacity-70"
           >
             AQ

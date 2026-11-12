@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useScramble } from "@/hooks/use-scramble";
+import { hoverSound, sound } from "@/lib/sound";
 
 export type ScrambleLinkProps = {
   href: string;
@@ -14,7 +15,13 @@ export type ScrambleLinkProps = {
 /** A link whose (monospace) label decodes with a scramble on hover. */
 export function ScrambleLink({ href, children, className, external }: ScrambleLinkProps) {
   const [display, scramble] = useScramble(children);
-  const shared = { className, onPointerEnter: scramble, "aria-label": children };
+  const shared = {
+    className,
+    onPointerEnter: scramble,
+    "aria-label": children,
+    ...sound("tap"),
+    ...hoverSound,
+  };
 
   if (external) {
     return (

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MorphIcon } from "@/components/morph-icon";
+import { hoverSound } from "@/lib/sound";
 import { cn } from "@/lib/utils";
 
 export type CopyEmailProps = {
@@ -27,6 +28,7 @@ export function CopyEmail({ email, className }: CopyEmailProps) {
     <button
       type="button"
       onClick={copy}
+      {...hoverSound}
       aria-label={copied ? "Email copied" : `Copy email address ${email}`}
       className={cn(
         "group inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 font-technical text-[11px] text-on-surface-variant transition-[color,border-color,transform] duration-150 ease-snappy hover:border-outline hover:text-primary active:scale-[0.97]",
