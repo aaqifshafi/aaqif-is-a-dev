@@ -1,4 +1,65 @@
+import { useId } from "react";
+
 type IconProps = { className?: string };
+
+export type BrandLogoProps = IconProps & {
+  /** `color` is the real logo; `mono` is its black-and-white resting form. */
+  variant?: "color" | "mono";
+};
+
+/**
+ * The real full-color Designfolio logo (ported from designfolio-2.0's
+ * DFLogoV2): white asterisk on a peach-to-orange gradient disc with a soft
+ * orange inner glow. `mono` keeps the exact geometry as a black disc with a
+ * white asterisk. Brand colors are part of the asset, not theme tokens.
+ */
+export const DesignfolioLogo = ({ className, variant = "color" }: BrandLogoProps) => {
+  const mono = variant === "mono";
+  const id = useId().replace(/:/g, "");
+  const filterId = `df-glow-${id}`;
+  const gradientId = `df-grad-${id}`;
+
+  return (
+    <svg viewBox="0 0 37 37" fill="none" aria-hidden="true" className={className}>
+      <g filter={mono ? undefined : `url(#${filterId})`}>
+        <rect width="37" height="37" rx="18.5" fill={mono ? "black" : `url(#${gradientId})`} />
+        <path
+          d="M20.0417 4.625H16.9583V14.7781L9.77902 7.59877L7.59877 9.77902L14.7781 16.9583H4.625V20.0417H14.7781L7.59877 27.221L9.77902 29.4012L16.9583 22.2219V32.375H20.0417V22.2219L27.221 29.4012L29.4012 27.221L22.2219 20.0417H32.375V16.9583H22.2219L29.4012 9.77902L27.221 7.59877L20.0417 14.7781V4.625Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <filter
+          id={filterId}
+          x="0"
+          y="0"
+          width="37"
+          height="37"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity={0} result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset />
+          <feGaussianBlur stdDeviation={2} />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2={-1} k3={1} />
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.333333 0 0 0 0 0.243137 0 0 0 1 0" />
+          <feBlend mode="normal" in2="shape" result="innerGlow" />
+        </filter>
+        <linearGradient id={gradientId} x1="18.5" y1="0" x2="18.5" y2="37" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#FFDCD7" />
+          <stop offset="0.788462" stopColor="#FF553E" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
 
 /** Designfolio mark — starburst glyph (inline SVG so it inherits currentColor). */
 export const DesignfolioIcon = ({ className }: IconProps) => (

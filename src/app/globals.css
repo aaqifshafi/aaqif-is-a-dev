@@ -170,6 +170,15 @@
   --chart-3: #71717a;
   --chart-4: #a1a1aa;
   --chart-5: #d4d4d8;
+
+  /* brand marks — the real colors the work logos bloom into on card hover.
+     Taken from each product's own app icon; identical in both themes. */
+  --brand-pob-bg: #1c1f2b;
+  --brand-pob-fg: #ffb020;
+  --brand-tapaway-bg: #0d4435;
+  --brand-tapaway-fg: #d3f500;
+  --brand-gistr-bg: #c2fe3c;
+  --brand-gistr-fg: #232323;
 }
 
 /* DARK — Monolith Engine (the canonical Stitch design, default theme) */

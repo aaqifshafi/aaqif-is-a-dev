@@ -2,11 +2,11 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { ActiveBadge } from "@/components/active-badge";
-import { workIcons } from "@/components/icons/work-icons";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/sections/section-shell";
 import { TagChip } from "@/components/tag-chip";
 import { WorkMedia } from "@/components/work-media";
+import { WorkLogoTile } from "@/components/work-logo-tile";
 import { work } from "@/lib/portfolio-data";
 import type { WorkProject } from "@/types/portfolio";
 
@@ -17,7 +17,6 @@ import type { WorkProject } from "@/types/portfolio";
  * without nesting interactive elements.
  */
 function WorkCard({ project }: { project: WorkProject }) {
-  const Icon = workIcons[project.icon];
   const external = Boolean(project.liveUrl);
   const href = project.liveUrl ?? `/work/${project.slug}`;
 
@@ -29,9 +28,7 @@ function WorkCard({ project }: { project: WorkProject }) {
         <div className="flex flex-col gap-3 p-5 sm:p-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-surface">
-                <Icon className="size-4 text-on-surface-variant" />
-              </div>
+              <WorkLogoTile icon={project.icon} />
               <div className="flex flex-col gap-0.5">
                 <div className="flex items-center gap-2">
                   <h3 className="font-pixel text-sm text-primary">
