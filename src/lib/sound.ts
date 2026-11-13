@@ -12,22 +12,18 @@ import { minimal } from "../../.web-kits";
  * Elements opt in with plain data attributes (so Server Components can carry
  * them), which `bindSounds()` delegates from the document:
  *   - `sound(name)`  → plays `name` on click (Enter/Space included)
- *   - `hoverSound`   → a faint tick when a mouse moves onto it
  *   - `typeSound`    → a key press per edit keystroke in a text field
  * Outcomes that aren't clicks (sent, failed) call `play()` directly.
+ * There are deliberately no hover sounds: they read as noise to most visitors.
  */
 
 /** Master level, 0–1. The patch is already quiet; this only trims. */
 export const SOUND_VOLUME = 1;
 
-/** Minimum gap between hover ticks, so sweeping across a row of links doesn't buzz. */
-const HOVER_THROTTLE_MS = 80;
-
 /** Minimum gap between keystroke sounds. */
 const TYPE_THROTTLE_MS = 40;
 
 const sounds = {
-  hover: defineSound(minimal.hover),
   tap: defineSound(minimal.tap),
   click: defineSound(minimal.click),
   "key-press": defineSound(minimal.keyPress),
@@ -113,9 +109,6 @@ export function sound(name: SoundName) {
   return { "data-sound": name };
 }
 
-/** Hover tick: spread onto a link. */
-export const hoverSound = { "data-sound-hover": "" } as const;
-
 /** Keystroke sound: spread onto a text input or textarea. */
 export const typeSound = { "data-sound-type": "" } as const;
 
@@ -131,7 +124,6 @@ function isSoundName(value: string | null): value is SoundName {
 export function bindSounds() {
   enabled = readStored();
 
-  let lastHover = 0;
   let lastType = 0;
 
   const onGesture = () => void unlockAudio();
@@ -140,20 +132,6 @@ export function bindSounds() {
     const el = (e.target as Element | null)?.closest?.("[data-sound]");
     const name = el?.getAttribute("data-sound") ?? null;
     if (isSoundName(name)) play(name);
-  };
-
-  // Mouse and pen only: touch fires synthetic hovers on tap, which would double
-  // up with the click sound. Plays once on entering an element, throttled.
-  const onPointerOver = (e: PointerEvent) => {
-    if (e.pointerType === "touch") return;
-    const el = (e.target as Element | null)?.closest?.("[data-sound-hover]");
-    if (!el) return;
-    const from = e.relatedTarget as Node | null;
-    if (from && el.contains(from)) return;
-    const now = performance.now();
-    if (now - lastHover < HOVER_THROTTLE_MS) return;
-    lastHover = now;
-    play("hover");
   };
 
   // Only keys that edit text, never in password fields, throttled.
@@ -173,14 +151,12 @@ export function bindSounds() {
   document.addEventListener("pointerdown", onGesture, { capture: true });
   document.addEventListener("keydown", onGesture, { capture: true });
   document.addEventListener("click", onClick);
-  document.addEventListener("pointerover", onPointerOver);
   document.addEventListener("keydown", onKeyDown);
 
   return () => {
     document.removeEventListener("pointerdown", onGesture, { capture: true });
     document.removeEventListener("keydown", onGesture, { capture: true });
     document.removeEventListener("click", onClick);
-    document.removeEventListener("pointerover", onPointerOver);
     document.removeEventListener("keydown", onKeyDown);
   };
 }

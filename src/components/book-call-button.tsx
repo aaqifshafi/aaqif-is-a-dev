@@ -5,6 +5,7 @@ import { getCalApi } from "@calcom/embed-react";
 import { useTheme } from "next-themes";
 
 import { profile } from "@/lib/portfolio-data";
+import { sound } from "@/lib/sound";
 
 const NAMESPACE = "book-call";
 
@@ -62,6 +63,7 @@ export function BookCallButton(props: BookCallButtonProps) {
       data-cal-namespace={NAMESPACE}
       data-cal-link={profile.calLink}
       data-cal-config={JSON.stringify({ layout: "month_view" })}
+      {...sound("tap")}
       {...props}
     />
   );

@@ -4,7 +4,7 @@ import { IconArrowUpRight, IconCalendar } from "@tabler/icons-react";
 import { BookCallButton } from "@/components/book-call-button";
 import { Magnetic } from "@/components/magnetic";
 import { useScramble } from "@/hooks/use-scramble";
-import { hoverSound, sound } from "@/lib/sound";
+import { sound } from "@/lib/sound";
 
 export type SocialChipProps = {
   label: string;
@@ -27,7 +27,6 @@ export function SocialChip({ label, href, booking }: SocialChipProps) {
     return (
       <Magnetic strength={2}>
         <BookCallButton
-          {...hoverSound}
           onPointerEnter={scramble}
           aria-label={label}
           className={chipClass}
@@ -46,7 +45,6 @@ export function SocialChip({ label, href, booking }: SocialChipProps) {
         target="_blank"
         rel="noopener noreferrer"
         {...sound("tap")}
-        {...hoverSound}
         onPointerEnter={scramble}
         aria-label={label}
         className={chipClass}
