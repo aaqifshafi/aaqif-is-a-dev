@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useScramble } from "@/hooks/use-scramble";
-import { hoverSound, sound } from "@/lib/sound";
+import { sound } from "@/lib/sound";
 
 export type ScrambleLinkProps = {
   href: string;
@@ -20,7 +20,6 @@ export function ScrambleLink({ href, children, className, external }: ScrambleLi
     onPointerEnter: scramble,
     "aria-label": children,
     ...sound("tap"),
-    ...hoverSound,
   };
 
   if (external) {
